@@ -49,7 +49,7 @@ const Signin = () => {
         router.replace('/');
       } catch (err) {
         const res = err.response;
-        if (res.status === 401 && res.data && !res.data.isVerified) {
+        if (res.status === 401 && res.data && res.data.isVerified === false) {
           setNotVerifiedPopupState(!notVerifiedPopupState);
         }
         setIsError(true);
