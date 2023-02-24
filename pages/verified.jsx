@@ -16,6 +16,7 @@ const Verified = () => {
   const router = useRouter();
 
   useEffect(() => {
+    // redirect to signup if user didn't follow verification process
     if (!verificationEmail) {
       router.replace('signup');
     }
