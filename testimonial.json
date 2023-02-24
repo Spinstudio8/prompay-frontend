@@ -1,0 +1,40 @@
+
+[
+    {
+        "id": 1,
+        "img":"/images/team/ino1.png",
+        "name":"Kelechi Afor",
+        "testimony":"The exams on Prompay are rather straightforward, and I was rewarded for learning. The effort is worthwhile."
+    },
+    {
+        "id": 2,
+        "img":"/images/team/ino2.png",
+        "name":"Yinka Ayefele",
+        "testimony":"Prompay is a platform where you either pass and earn, or you fail and learn. Both instances are win-win scenarios."
+    },
+    {
+        "id": 3,
+        "img": "/images/team/ino3.png",
+        "name":"Gbadebo Afor",
+        "testimony":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
+    },
+    {
+        "id": 4,
+        "img":"/images/team/ino4.png",
+        "name":"Yankay Afor",
+        "testimony":"Prompay is a platform where you either pass and earn, or you fail and learn. Both instances are win-win scenarios."
+    },
+    {
+        "id": 5,
+         "img":"/images/team/ino4.png",
+        "name":"Sebotimo Jude",
+        "testimony":"The exams on Prompay are rather straightforward, and I was rewarded for learning. The effort is worthwhile."
+    },
+ {
+        "id": 6,
+        "img":"/images/team/ino4.png",
+        "name":"Enugbe Monidiowo",
+        "testimony":"Prompay is a platform where you either pass and earn, or you fail and learn. Both instances are win-win scenarios."
+    }
+
+]
