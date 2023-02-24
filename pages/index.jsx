@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Nav from '../components/Nav';
 import Info from '../components/Info';
 import Slider from '../components/Slider';
@@ -10,6 +11,7 @@ import { useRouter, withRouter } from 'next/router';
 import Cookies from 'js-cookie';
 
 export default function Home() {
+  const token = useSelector((state) => state.user.token);
   const router = useRouter().pathname;
 
   useEffect(() => {
@@ -54,18 +56,22 @@ export default function Home() {
               learn if you fail.
             </p>
             <div className='flex gap-[24px] justify-center mt-[20px] md:mt-0'>
-              <Link
-                href='/signup'
-                className='bg-transparent hover:bg-primaryGreen py-[16px] px-[24px] w-[154px] h-[56px] rounded-lg border hover:border-none text-[16px] font-[900] leading-5 text-center'
-              >
-                Sign Up
-              </Link>
-              <Link
-                href='/signin'
-                className='bg-primaryGreen hover:bg-transparent hover:border py-[16px] px-24px w-[154px] h-[56px] rounded-lg text-[16px] font-[900] leading-5 text-center'
-              >
-                Log In
-              </Link>
+              {!token && (
+                <>
+                  <Link
+                    href='/signup'
+                    className='bg-transparent hover:bg-primaryGreen py-[16px] px-[24px] w-[154px] h-[56px] rounded-lg border hover:border-none text-[16px] font-[900] leading-5 text-center'
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href='/signin'
+                    className='bg-primaryGreen hover:bg-transparent hover:border py-[16px] px-24px w-[154px] h-[56px] rounded-lg text-[16px] font-[900] leading-5 text-center'
+                  >
+                    Log In
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

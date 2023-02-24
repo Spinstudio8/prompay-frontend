@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { AiOutlineMail } from 'react-icons/ai';
 import { resendVerificationCode, verifyCode } from '../services/userService';

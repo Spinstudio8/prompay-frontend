@@ -29,8 +29,6 @@ const Signin = () => {
 
   const userToken = useSelector((state) => state.user.token);
 
-  const handleNotVerifiedPopup = () => {};
-
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
