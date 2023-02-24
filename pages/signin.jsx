@@ -44,7 +44,7 @@ const Signin = () => {
         console.log(data.token);
         dispatch(setLogin(data.token));
         setIsError(false);
-        router.replace('/');
+        router.replace('/dashboard');
       } catch (err) {
         const res = err.response;
         if (res.status === 401 && res.data && res.data.isVerified === false) {
