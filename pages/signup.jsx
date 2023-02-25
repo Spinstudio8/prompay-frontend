@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { useRouter, withRouter } from 'next/router';
 import Meta from '../components/Meta';
 import ButtonLoader from '../components/ButtonLoader';
 import { signup } from '../services/userService';
+import { setVerificationEmail } from '../store/slice/userSlice';
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const navbar = router.pathname;
 
@@ -70,8 +72,7 @@ const Signup = () => {
       try {
         const { data } = await signup(formData);
         setIsError(false);
-        // localStorage.setItem('email', data.email);
-        Cookies.set('email', data.email);
+        dispatch(setVerificationEmail(state.email));
         router.replace('verify');
       } catch (err) {
         setIsError(true);

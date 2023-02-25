@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { ImCheckmark } from 'react-icons/im';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeVerificationEmail } from '../store/slice/userSlice';
 

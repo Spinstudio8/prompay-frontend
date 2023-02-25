@@ -6,12 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import Nav from '../components/Nav';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
 import Meta from '../components/Meta';
 import { login } from '../services/authService';
 import ButtonLoader from '../components/ButtonLoader';
 import NotVerifiedPopup from '../components/NotVerifiedPopup';
-import { setLogin } from '../store/slice/userSlice';
+import { setLogin, removeVerificationEmail } from '../store/slice/userSlice';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -27,8 +26,6 @@ const Signin = () => {
 
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-  const userToken = useSelector((state) => state.user.token);
-
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
@@ -41,7 +38,6 @@ const Signin = () => {
     const loginUser = async () => {
       try {
         const { data } = await login(state);
-        console.log(data.token);
         dispatch(setLogin(data.token));
         setIsError(false);
         router.replace('/dashboard');
@@ -63,8 +59,7 @@ const Signin = () => {
 
   useEffect(() => {
     Aos.init({ duration: 3000 });
-    Cookies.remove('email');
-    console.log(userToken);
+    dispatch(removeVerificationEmail());
   }, []);
 
   const navbar = router.pathname;
