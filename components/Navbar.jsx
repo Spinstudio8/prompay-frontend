@@ -9,9 +9,7 @@ import { FaToggleOn, FaToggleOff } from 'react-icons/fa';
 import { IoEyeSharp } from 'react-icons/io5';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getUser, removeUserSession } from '../utils/common';
 import { data } from './Notification';
-
 import { useStateContext } from '../auth/AuthContext';
 import { setLogout } from '../store/slice/userSlice';
 import { persistor } from './../store/store';
@@ -34,10 +32,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 
 const Navbar = () => {
   const {
-    activeMenu,
     setActiveMenu,
-    logout,
-    login,
     screenSize,
     setScreenSize,
     darkToggle,
@@ -46,7 +41,6 @@ const Navbar = () => {
   const [showFullPageLoader, setShowFullPageLoader] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [notificationdropDown, setNotificationdropDown] = useState(false);
-  const user = getUser();
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -219,8 +213,11 @@ const Navbar = () => {
                 Notifications
               </p>
             </div>
-            {data.map((notification) => (
-              <li className='mb-3 flex items-center border-b border-b-[#F9FAFB] pb-[15px] py-4  px-4'>
+            {data.map((notification, index) => (
+              <li
+                key={notification.time + index}
+                className='mb-3 flex items-center border-b border-b-[#F9FAFB] pb-[15px] py-4  px-4'
+              >
                 <img
                   src={notification.image}
                   alt=''

@@ -1,48 +1,111 @@
-import { AiFillHome } from "react-icons/ai";
-import { DiGoogleAnalytics } from "react-icons/di";
-import { ImUsers } from "react-icons/im";
-import { BiCategoryAlt, BiPencil } from "react-icons/bi";
-import { MdCategory } from "react-icons/md";
-import { HiOutlineUserGroup } from "react-icons/hi";
+import { AiFillHome } from 'react-icons/ai';
+import { DiGoogleAnalytics } from 'react-icons/di';
+import { ImUsers } from 'react-icons/im';
+import {
+  BiCategoryAlt,
+  BiPencil,
+  BiUserCircle,
+  BiSupport,
+} from 'react-icons/bi';
+import { BsQuestionSquareFill } from 'react-icons/bs';
+import {
+  MdCategory,
+  MdOutlineDashboard,
+  MdOutlineAccountBalanceWallet,
+  MdOutlinePayments,
+  MdOutlineSettings,
+} from 'react-icons/md';
+import { HiOutlineUserGroup } from 'react-icons/hi';
 // import { BiPencil } from "react-icons/bi";
 
-export const links = [
+export const userLinks = [
   {
-    title: "Dashboard",
+    title: 'Dashboard',
     links: [
       {
-        name: "dashboard",
-        icon: <AiFillHome />,
+        name: 'dashboard',
+        icon: <MdOutlineDashboard />,
+        path: 'dashboard',
       },
     ],
   },
 
   {
-    title: "Pages",
+    title: 'Pages',
     links: [
-      // {
-      //   name: "Total Votes",
-      //   icon: <DiGoogleAnalytics />,
-      // },
       {
-        name: "assessment",
+        name: 'assessment',
         icon: <ImUsers />,
+        path: 'assessment',
       },
       {
-        name: "wallet",
-        icon: <HiOutlineUserGroup />,
+        name: 'wallet',
+        icon: <MdOutlineAccountBalanceWallet />,
+        path: 'wallet',
       },
       {
-        name: "payment-history",
-        icon: <HiOutlineUserGroup />,
+        name: 'payment history',
+        icon: <MdOutlinePayments />,
+        path: 'payment-history',
       },
-      // {
-      //   name: "edit-nominees",
-      //   icon: <BiPencil />,
-      // },
       {
-        name: "support",
-        icon: <MdCategory />,
+        name: 'support',
+        icon: <BiSupport />,
+        path: 'support',
+      },
+    ],
+  },
+];
+
+export const adminLinks = [
+  {
+    title: 'Overview',
+    links: [
+      {
+        name: 'overview',
+        icon: <MdOutlineDashboard />,
+        path: 'overview',
+      },
+    ],
+  },
+
+  {
+    title: 'Pages',
+    links: [
+      {
+        name: 'admins',
+        icon: <BiUserCircle />,
+        path: 'admins',
+      },
+      {
+        name: 'manage users',
+        icon: <ImUsers />,
+        path: 'manage-users',
+      },
+      {
+        name: 'manage questions',
+        icon: <BsQuestionSquareFill />,
+        path: 'manage-questions',
+      },
+      {
+        name: 'wallet',
+        icon: <MdOutlineAccountBalanceWallet />,
+        path: 'wallet',
+      },
+      {
+        name: 'payment history',
+        icon: <MdOutlinePayments />,
+        path: 'payment-history',
+      },
+      {
+        name: 'support',
+        icon: <BiSupport />,
+        path: 'support',
+      },
+      {
+        name: 'platform settings',
+        icon: <MdOutlineSettings />,
+        path: 'platform-settings',
       },
     ],
   },
