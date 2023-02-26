@@ -7,11 +7,43 @@ import { getSubjects } from '../../services/subjectService';
 
 const AddQuestion = () => {
   const [subjects, setSubjects] = useState([]);
-  const [value, setValue] = useState('');
+  const [editorValue, setEditorValue] = useState('');
+  const [state, setState] = useState({
+    subject: '',
+    description: '',
+    optionA: '',
+    optionB: '',
+    optionC: '',
+    optionD: '',
+    answer: 0,
+  });
 
-  function handleChange(newValue) {
-    setValue(newValue);
-    console.log(newValue);
+  function handleRichEditor(newValue) {
+    setEditorValue(newValue);
+  }
+
+  function handleChange(e) {
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setState({ ...state, [e.target.name]: value });
+  }
+
+  async function handleAddQuestion() {
+    const options = [];
+    options.push(state.optionA);
+    options.push(state.optionB);
+    options.push(state.optionC);
+    options.push(state.optionD);
+
+    const data = {
+      subject: state.subject,
+      description: state.description,
+      question: editorValue,
+      options: options,
+      answer: state.answer,
+    };
+
+    console.log(data);
   }
 
   useEffect(() => {
@@ -44,11 +76,11 @@ const AddQuestion = () => {
                   name='subject'
                   id='subject'
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
-                  onChange={(e) => console.log(e.target.value)}
+                  onChange={handleChange}
                 >
                   <option value=''>Select Subject</option>
                   {subjects.map((subject) => (
-                    <option key={subject._id} value={subject.title}>
+                    <option key={subject._id} value={subject._id}>
                       {subject.title}
                     </option>
                   ))}
@@ -61,6 +93,7 @@ const AddQuestion = () => {
                 <textarea
                   name='description'
                   id='description'
+                  onChange={handleChange}
                   className='w-full h-[60px] bg-light-gray border border-[rgba(0,0,0,0.2)] rounded p-2 resize-none'
                 ></textarea>
               </div>
@@ -69,8 +102,8 @@ const AddQuestion = () => {
                   Question
                 </label>
                 <ReactQuill
-                  value={value}
-                  onChange={handleChange}
+                  value={editorValue}
+                  onChange={handleRichEditor}
                   className='h-[200px] mb-[100px] md:mb-[70px]'
                 />
               </div>
@@ -82,12 +115,15 @@ const AddQuestion = () => {
                   type='text'
                   id='optionA'
                   name='optionA'
+                  value={state.optionA}
+                  onChange={handleChange}
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                 />
                 <input
                   type='radio'
                   name='answer'
                   value={0}
+                  onChange={handleChange}
                   className='w-[20px] h-[20px] mx-4'
                 />
               </div>
@@ -99,12 +135,15 @@ const AddQuestion = () => {
                   type='text'
                   id='optionB'
                   name='optionB'
+                  value={state.optionB}
+                  onChange={handleChange}
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                 />
                 <input
                   type='radio'
                   name='answer'
                   value={1}
+                  onChange={handleChange}
                   className='w-[20px] h-[20px] mx-4'
                 />
               </div>
@@ -116,12 +155,15 @@ const AddQuestion = () => {
                   type='text'
                   id='optionC'
                   name='optionC'
+                  value={state.optionC}
+                  onChange={handleChange}
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                 />
                 <input
                   type='radio'
                   name='answer'
                   value={2}
+                  onChange={handleChange}
                   className='w-[20px] h-[20px] mx-4'
                 />
               </div>
@@ -133,17 +175,23 @@ const AddQuestion = () => {
                   type='text'
                   id='optionD'
                   name='optionD'
+                  value={state.optionD}
+                  onChange={handleChange}
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                 />
                 <input
                   type='radio'
                   name='answer'
                   value={3}
+                  onChange={handleChange}
                   className='w-[20px] h-[20px] mx-4'
                 />
               </div>
               <div className='my-8 flex gap-[24px]'>
-                <button className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'>
+                <button
+                  onClick={handleAddQuestion}
+                  className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+                >
                   Add question
                 </button>
                 <button className='bg-black text-white px-5 py-2 flex items-center justify-center rounded'>
