@@ -14,6 +14,7 @@ import {
   MdOutlineAccountBalanceWallet,
   MdOutlinePayments,
   MdOutlineSettings,
+  MdAssessment,
 } from 'react-icons/md';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 // import { BiPencil } from "react-icons/bi";
@@ -35,7 +36,7 @@ export const userLinks = [
     links: [
       {
         name: 'assessment',
-        icon: <ImUsers />,
+        icon: <MdAssessment />,
         path: 'assessment',
       },
       {
