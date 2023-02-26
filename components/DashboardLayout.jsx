@@ -5,9 +5,6 @@ import { useStateContext } from '../auth/AuthContext';
 function DashboardLayout({ children }) {
   const { activeMenu, darkToggle } = useStateContext();
 
-  // const location = useLocation();
-  // console.log('hash', location.hash);
-  // console.log(login)
   return (
     <div className={`${darkToggle && 'dark'} App`}>
       {/* <HashRouter> */}
