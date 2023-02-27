@@ -33,7 +33,7 @@ export function resendVerificationCode(email) {
   return http.post(
     apiEndpoint + '/resend-verification-code',
     {
-      email
+      email,
     },
     {
       headers: {
@@ -56,6 +56,15 @@ export function verifyCode(data) {
       },
     }
   );
+}
+
+export function getUserDashboard(id, token) {
+  return http.get(`${apiEndpoint}/${id}/dashboard`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
 }
 
 export function getUserProfile(id) {

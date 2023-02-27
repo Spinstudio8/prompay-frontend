@@ -96,7 +96,6 @@ export const questionColumns = [
     selector: (row) => row.subject?.title,
     sortable: true,
     reorder: true,
-    grow: 2,
     style: {
       color: '#111928',
       fontSize: '14px',
@@ -108,7 +107,7 @@ export const questionColumns = [
     selector: (row) => row.question,
     sortable: true,
     reorder: true,
-    grow: 2,
+    grow: 3,
     style: {
       color: '#6B7280',
       fontSize: '14px',
