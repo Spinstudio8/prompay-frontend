@@ -104,7 +104,7 @@ export const questionColumns = [
   },
   {
     name: 'QUESTION',
-    selector: (row) => row.question,
+    selector: (row) => row.questionPlainText,
     sortable: true,
     reorder: true,
     grow: 3,
@@ -112,6 +112,116 @@ export const questionColumns = [
       color: '#6B7280',
       fontSize: '14px',
       fontWeight: 400,
+    },
+  },
+];
+
+export const transactionColumns = [
+  {
+    name: 'TRANSACTIONS',
+    selector: (row) => row.type,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'DATE',
+    selector: (row) => row.date,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#6B7280',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'AMOUNT',
+    selector: (row) => row.amount,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 500,
+    },
+  },
+  {
+    name: 'STATUS',
+    selector: (row) => row.status,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      //   color: "#03543F",
+      fontSize: '14px',
+      fontWeight: 400,
+      //   backgroundColor: "#DEF7EC",
+      borderRadius: '6px',
+      //   marginLeft: "20px",
+      //   marginRight: "120px",
+    },
+  },
+];
+
+export const assessmentColumns = [
+  {
+    name: 'ASSESSMENTS',
+    selector: (row) => row.assessment,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'DATE',
+    selector: (row) => row.date,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#6B7280',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'AMOUNT',
+    selector: (row) => row.amount,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 500,
+    },
+  },
+  {
+    name: 'STATUS',
+    selector: (row) => row.status,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      //   color: "#03543F",
+      fontSize: '14px',
+      fontWeight: 400,
+      //   backgroundColor: "#DEF7EC",
+      borderRadius: '6px',
+      //   marginLeft: "20px",
+      //   marginRight: "120px",
     },
   },
 ];

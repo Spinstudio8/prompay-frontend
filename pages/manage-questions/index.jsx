@@ -31,8 +31,8 @@ const ManageQuestions = () => {
     return (
       (item.subject.title &&
         item.subject.title.toLowerCase().includes(filterText.toLowerCase())) ||
-      (item.question &&
-        item.question.toLowerCase().includes(filterText.toLowerCase()))
+      (item.questionPlainText &&
+        item.questionPlainText.toLowerCase().includes(filterText.toLowerCase()))
     );
   });
   const [resetPaginationToggle, setResetPaginationToggle] =

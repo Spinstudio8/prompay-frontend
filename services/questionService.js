@@ -11,6 +11,7 @@ export function addQuestion(data, token) {
       question: data.question,
       options: data.options,
       answer: data.answer,
+      questionPlainText: data.questionPlainText,
     },
     {
       headers: {

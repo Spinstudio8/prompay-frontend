@@ -67,6 +67,15 @@ export function getUserDashboard(id, token) {
   });
 }
 
+export function getUserWallet(id, token) {
+  return http.get(`${apiEndpoint}/${id}/wallet`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export function getUserProfile(id) {
   return http.get(`${apiEndpoint}/${id}/profile`, config);
 }

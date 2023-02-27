@@ -31,6 +31,10 @@ const AddQuestion = () => {
     setEditorValue(newValue);
   }
 
+  function htmlToPlainText(html) {
+    return html.replace(/<[^>]+>/g, '');
+  }
+
   function handleChange(e) {
     const value =
       e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -39,6 +43,7 @@ const AddQuestion = () => {
 
   async function handleAddQuestion() {
     setLoadingSubmit(true);
+    const plainText = htmlToPlainText(editorValue);
 
     const options = [];
     options.push(state.optionA);
@@ -52,6 +57,7 @@ const AddQuestion = () => {
       question: editorValue,
       options: options,
       answer: state.answer,
+      questionPlainText: plainText,
     };
 
     try {
@@ -61,8 +67,10 @@ const AddQuestion = () => {
       setIsError(false);
       handleReset();
     } catch (err) {
+      if (err.response && err.response?.data) {
+        setErrorMessage(err.response.data.message);
+      }
       setIsError(true);
-      setErrorMessage(err.response.data.message);
       setLoadingSubmit(false);
     }
   }

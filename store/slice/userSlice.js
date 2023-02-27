@@ -23,7 +23,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setLogin: (state, action) => {
-      console.log(action.payload);
       state.token = action.payload;
       state.tokenPayload = decodeJwt(action.payload);
     },
