@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS file for styling
 import store, { persistor } from '../store/store';
 import { AuthContextProvider } from '../auth/AuthContext';
 import { Roboto } from '@next/font/google';
@@ -17,6 +19,7 @@ export default function App({ Component, pageProps }) {
           <AuthContextProvider>
             <Layout>
               <main className={roboto.className}>
+                <ToastContainer />
                 <Component {...pageProps} />
               </main>
             </Layout>

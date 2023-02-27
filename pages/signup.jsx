@@ -27,7 +27,6 @@ const Signup = () => {
   });
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   useEffect(() => {

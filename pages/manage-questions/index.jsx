@@ -1,17 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import DashboardLayout from '../../components/DashboardLayout';
-import DataTable from 'react-data-table-component';
-
-import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
-import { ImUsers } from 'react-icons/im';
-import { HiOutlineUserGroup } from 'react-icons/hi';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import DataTableBase from '../../components/DataTableBase';
 import { FiSearch } from 'react-icons/fi';
-import { tabledata, columns } from '../../components/TableData';
+import { questionColumns } from '../../components/TableData';
 import differenceBy from 'lodash/differenceBy';
-
-// import Export from "react-data-table-component";
+import { getQuestions } from '../../services/questionService';
 
 const SearchComponent = ({ onFilter, filterText }) => (
   <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white flex w-4/5 md:w-[325px] h-[42px] py-[12-x] px-[16px] items-center border border-[#D1D5DB] bg-[#F9FAFB] rounded-lg mb-[16px]'>
@@ -28,16 +23,16 @@ const SearchComponent = ({ onFilter, filterText }) => (
 );
 
 const ManageQuestions = () => {
+  const { token } = useSelector((state) => state.user);
+  const [questions, setQuestions] = useState([]);
+
   const [filterText, setFilterText] = React.useState('');
-  const filteredItems = tabledata.filter((item) => {
+  const filteredItems = questions.filter((item) => {
     return (
-      (item.transaction &&
-        item.transaction.toLowerCase().includes(filterText.toLowerCase())) ||
-      (item.date &&
-        item.date.toLowerCase().includes(filterText.toLowerCase())) ||
-      (item.amount && item.amount.toString().includes(filterText.toString())) ||
-      (item.status &&
-        item.status.toLowerCase().includes(filterText.toLowerCase()))
+      (item.subject.title &&
+        item.subject.title.toLowerCase().includes(filterText.toLowerCase())) ||
+      (item.question &&
+        item.question.toLowerCase().includes(filterText.toLowerCase()))
     );
   });
   const [resetPaginationToggle, setResetPaginationToggle] =
@@ -47,12 +42,20 @@ const ManageQuestions = () => {
   const [selectedRows, setSelectedRows] = React.useState([]);
   const [toggleCleared, setToggleCleared] = React.useState(false);
   const [data, setData] = React.useState(filteredItems);
+
   React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      setRows(tabledata);
-      setPending(false);
-    }, 2000);
-    return () => clearTimeout(timeout);
+    const getAllQuestions = async () => {
+      try {
+        const { data } = await getQuestions(token);
+        setQuestions(data);
+        setRows(data);
+        setPending(false);
+      } catch (error) {
+        setPending(true);
+      }
+    };
+
+    getAllQuestions();
   }, []);
 
   const subHeaderComponentMemo = React.useMemo(() => {
@@ -73,7 +76,7 @@ const ManageQuestions = () => {
   }, [filterText, resetPaginationToggle]);
 
   //   const actionsMemo = React.useMemo(
-  //     () => <Export onExport={() => downloadCSV(columns)} />,
+  //     () => <Export onExport={() => downloadCSV(questionColumns)} />,
   //     []
   //   );
 
@@ -113,7 +116,7 @@ const ManageQuestions = () => {
     <>
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
-          <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
+          <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div className='flex justify-between mb-[20px] md:mb-[49px]'>
               <h2 className='font-[500] text-[24px] leading-7'>Questions</h2>
               <Link
@@ -132,8 +135,8 @@ const ManageQuestions = () => {
             >
               {subHeaderComponentMemo}
               <DataTableBase
-                columns={columns}
-                data={filteredItems}
+                columns={questionColumns}
+                data={questions}
                 progressPending={pending}
                 contextActions={contextActions}
                 onSelectedRowsChange={handleRowSelected}

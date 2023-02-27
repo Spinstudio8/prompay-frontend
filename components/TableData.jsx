@@ -89,3 +89,30 @@ export const tabledata = [
 ];
 
 // export default { tabledata, columns };
+
+export const questionColumns = [
+  {
+    name: 'SUBJECT',
+    selector: (row) => row.subject?.title,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'QUESTION',
+    selector: (row) => row.question,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#6B7280',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+];

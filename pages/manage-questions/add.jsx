@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css'; // import the styles
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import DashboardLayout from '../../components/DashboardLayout';
 import { getSubjects } from '../../services/subjectService';
+import { addQuestion } from '../../services/questionService';
+import ButtonLoader from '../../components/ButtonLoader';
 
 const AddQuestion = () => {
+  const { token } = useSelector((state) => state.user);
   const [subjects, setSubjects] = useState([]);
   const [editorValue, setEditorValue] = useState('');
   const [state, setState] = useState({
@@ -15,8 +20,12 @@ const AddQuestion = () => {
     optionB: '',
     optionC: '',
     optionD: '',
-    answer: 0,
+    answer: '',
   });
+
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   function handleRichEditor(newValue) {
     setEditorValue(newValue);
@@ -29,13 +38,15 @@ const AddQuestion = () => {
   }
 
   async function handleAddQuestion() {
+    setLoadingSubmit(true);
+
     const options = [];
     options.push(state.optionA);
     options.push(state.optionB);
     options.push(state.optionC);
     options.push(state.optionD);
 
-    const data = {
+    const questionData = {
       subject: state.subject,
       description: state.description,
       question: editorValue,
@@ -43,13 +54,37 @@ const AddQuestion = () => {
       answer: state.answer,
     };
 
-    console.log(data);
+    try {
+      const { data } = await addQuestion(questionData, token);
+      toast(data.message);
+      setLoadingSubmit(false);
+      setIsError(false);
+      handleReset();
+    } catch (err) {
+      setIsError(true);
+      setErrorMessage(err.response.data.message);
+      setLoadingSubmit(false);
+    }
+  }
+
+  function handleReset() {
+    setState({
+      subject: '',
+      description: '',
+      optionA: '',
+      optionB: '',
+      optionC: '',
+      optionD: '',
+      answer: '',
+    });
+
+    setEditorValue('');
   }
 
   useEffect(() => {
     const getAllsubjects = async () => {
       try {
-        const { data } = await getSubjects();
+        const { data } = await getSubjects(token);
         setSubjects(data);
       } catch (err) {}
     };
@@ -61,7 +96,7 @@ const AddQuestion = () => {
     <>
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
-          <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
+          <div className='pb-[50px] pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div className='flex justify-between mb-[20px] md:mb-[49px]'>
               <h2 className='font-[500] text-[24px] leading-7'>
                 Add new question
@@ -75,6 +110,7 @@ const AddQuestion = () => {
                 <select
                   name='subject'
                   id='subject'
+                  value={state.subject}
                   className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                   onChange={handleChange}
                 >
@@ -93,6 +129,7 @@ const AddQuestion = () => {
                 <textarea
                   name='description'
                   id='description'
+                  value={state.description}
                   onChange={handleChange}
                   className='w-full h-[60px] bg-light-gray border border-[rgba(0,0,0,0.2)] rounded p-2 resize-none'
                 ></textarea>
@@ -187,17 +224,31 @@ const AddQuestion = () => {
                   className='w-[20px] h-[20px] mx-4'
                 />
               </div>
-              <div className='my-8 flex gap-[24px]'>
-                <button
-                  onClick={handleAddQuestion}
-                  className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
-                >
-                  Add question
-                </button>
-                <button className='bg-black text-white px-5 py-2 flex items-center justify-center rounded'>
-                  Reset
-                </button>
+              <div className='mt-8 mb-2 flex gap-[24px]'>
+                {loadingSubmit ? (
+                  <ButtonLoader />
+                ) : (
+                  <>
+                    <button
+                      onClick={handleAddQuestion}
+                      className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+                    >
+                      Add question
+                    </button>
+                    <button
+                      onClick={handleReset}
+                      className='bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+                    >
+                      Reset
+                    </button>
+                  </>
+                )}
               </div>
+              {isError && (
+                <p className='mt-2 mb-8 text-[14px] text-red-600'>
+                  {errorMessage}
+                </p>
+              )}
             </div>
           </div>
         </div>
