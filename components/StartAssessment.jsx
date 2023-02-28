@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import {
-  startAssessment,
-  submitAssessment,
-} from '../services/assessmentService';
+import { submitAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
+import ModalDialog from './ModalDialog';
 
 const StartAssessment = ({ assessment }) => {
   const { token } = useSelector((state) => state.user);
@@ -23,6 +21,14 @@ const StartAssessment = ({ assessment }) => {
   const [assessmentAnswer, setAssessmentAnswer] = useState([]);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const [assessmentResult, setAssessmentResult] = useState({
+    message: '',
+    score: 0,
+    totalQuestion: 0,
+  });
+
+  const [modalState, setModalState] = useState(false);
 
   const handlePrevNext = (button) => {
     if (button === 'prev') {
@@ -83,10 +89,10 @@ const StartAssessment = ({ assessment }) => {
     console.log(newAssessmentAnswer);
 
     try {
-      const { data } = await submitAssessment(assessmentAnswer, token);
-      console.log(data);
+      const { data } = await submitAssessment(newAssessmentAnswer, token);
       setLoadingSubmit(false);
-      console.log(data);
+      setAssessmentResult(data);
+      setModalState(true);
     } catch (err) {
       setLoadingSubmit(false);
       if (err.response && err.response?.data) {
@@ -106,7 +112,7 @@ const StartAssessment = ({ assessment }) => {
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
           {currentQuestion?.subject.title}
         </h3>
-        <div className='relative w-full h-[435px] xs:h-[400px] md:h-[470px]'>
+        <div className='relative w-full'>
           {assessment.questions.map((item, index) => (
             <div
               key={item._id}
@@ -204,37 +210,54 @@ const StartAssessment = ({ assessment }) => {
                   </div>
                 </div>
               </div>
+              <div className='flex gap-x-[35px] justify-center mb-[20px] md:mb-[100px]'>
+                <button
+                  onClick={() => handlePrevNext('prev')}
+                  className='w-[150px] shadow border-2 px-5 py-3 flex items-center justify-center rounded'
+                >
+                  <RxDoubleArrowLeft />
+                  <span className='ml-[10px]'>Previous</span>
+                </button>
+                <button
+                  onClick={() => handlePrevNext('next')}
+                  className='w-[150px] shadow border-2 px-5 py-3 flex items-center justify-center rounded'
+                >
+                  <span className='mr-[10px]'>Next</span> <RxDoubleArrowRight />
+                </button>
+              </div>
+              <div className='flex justify-center md:justify-end pb-[20px]'>
+                {loadingSubmit ? (
+                  <ButtonLoader />
+                ) : (
+                  <button
+                    onClick={handleSubmit}
+                    className='w-[150px] bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
+                  >
+                    Submit
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
-        <div className='flex gap-x-[35px] justify-center mb-[20px] md:mb-[100px]'>
-          <button
-            onClick={() => handlePrevNext('prev')}
-            className='w-[150px] shadow border-2 px-5 py-3 flex items-center justify-center rounded'
-          >
-            <RxDoubleArrowLeft />
-            <span className='ml-[10px]'>Previous</span>
-          </button>
-          <button
-            onClick={() => handlePrevNext('next')}
-            className='w-[150px] shadow border-2 px-5 py-3 flex items-center justify-center rounded'
-          >
-            <span className='mr-[10px]'>Next</span> <RxDoubleArrowRight />
-          </button>
-        </div>
-        <div className='flex justify-center md:justify-end pb-[20px]'>
-          {loadingSubmit ? (
-            <ButtonLoader />
-          ) : (
-            <button
-              onClick={handleSubmit}
-              className='w-[150px] bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
-            >
-              Submit
-            </button>
-          )}
-        </div>
       </div>
+      <ModalDialog showModal={modalState}>
+        <h1 className='mb-4 font-bold'>ASSESSMENT</h1>
+        <div className='w-full flex flex-col items-center'>
+          <p>{assessmentResult.message}</p>
+          <p className='mt-2'>
+            <span className='text-primaryGreen'>Your score:</span>{' '}
+            {assessmentResult.score}/{assessmentResult.totalQuestion}
+          </p>
+          <Link
+            href={'/dashboard'}
+            onClick={() => setModalState(false)}
+            className='my-6 bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+          >
+            Ok
+          </Link>
+        </div>
+      </ModalDialog>
     </>
   );
 };
