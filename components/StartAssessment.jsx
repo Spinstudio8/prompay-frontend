@@ -27,12 +27,12 @@ const StartAssessment = ({ assessment }) => {
   const handlePrevNext = (button) => {
     if (button === 'prev') {
       const current =
-        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 19;
+        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 49;
       setCurrentQuestionNumber(current);
     }
     if (button === 'next') {
       const current =
-        currentQuestionNumber < 19 ? currentQuestionNumber + 1 : 0;
+        currentQuestionNumber < 49 ? currentQuestionNumber + 1 : 0;
       setCurrentQuestionNumber(current);
     }
     console.log(assessmentAnswer);
@@ -65,6 +65,22 @@ const StartAssessment = ({ assessment }) => {
   const handleSubmit = async () => {
     setLoadingSubmit(true);
     setErrorMessage('');
+
+    let newAssessmentAnswer = [...assessmentAnswer];
+    for (const question of assessment.questions) {
+      const questionAnswered = newAssessmentAnswer.find(
+        (item) => item.question == question._id
+      );
+      if (!questionAnswered) {
+        newAssessmentAnswer.push({
+          question: question._id,
+          subject: question.subject._id,
+          answer: 4,
+        });
+      }
+    }
+
+    console.log(newAssessmentAnswer);
 
     try {
       const { data } = await submitAssessment(assessmentAnswer, token);
