@@ -75,7 +75,9 @@ const Signup = () => {
         router.replace('verify');
       } catch (err) {
         setIsError(true);
-        setErrorMessage(err.response.data.message);
+        if (err.response && err.response?.data) {
+          setErrorMessage(err.response.data.message);
+        }
         setLoadingSubmit(false);
       }
     };

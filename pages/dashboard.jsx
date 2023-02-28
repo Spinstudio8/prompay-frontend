@@ -129,8 +129,8 @@ const dashboard = () => {
                     {/* <Link href="/candidates"> */}
                     <DashboardCard
                       icon='/images/icon/total.png'
-                      figure={userDashboard.subjects[6]?.score}
-                      title={userDashboard.subjects[6]?.title}
+                      figure={userDashboard.totalScore}
+                      title={'Total Scores'}
                       bg='#F8F8FB'
                       textColor='#4E4DA4'
                     />

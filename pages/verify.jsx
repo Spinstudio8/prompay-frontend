@@ -27,7 +27,6 @@ const Verify = () => {
   }, []);
 
   let submitCode = async () => {
-    console.log(verificationEmail);
     try {
       const { data } = await verifyCode({
         email: verificationEmail,
@@ -80,10 +79,10 @@ const Verify = () => {
 
     try {
       const { data } = await resendVerificationCode(verificationEmail);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       setIsError(true);
-      if (err.response && err.response.data) {
+      if (err.response && err.response?.data) {
         setErrorMessage(err.response.data.message);
       }
     }
