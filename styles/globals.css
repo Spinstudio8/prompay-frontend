@@ -113,8 +113,8 @@ a {
     color-scheme: dark;
   }
 }
-@media (min-width:769px) and (max-width: 910px) {
-  .break{
+@media (min-width: 769px) and (max-width: 910px) {
+  .break {
     padding: 30px 50px;
   }
 }
@@ -127,7 +127,7 @@ a {
   z-index: 10000;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
   .sidebar {
     z-index: 10000000;
   }
@@ -149,4 +149,16 @@ a {
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+/* Hide the arrows */
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-arrows {
+  /* Firefox */
+  -moz-appearance: textfield;
 }

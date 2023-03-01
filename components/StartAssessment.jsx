@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { submitAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
 import ModalDialog from './ModalDialog';
 
 const StartAssessment = ({ assessment }) => {
+  const router = useRouter();
   const { token } = useSelector((state) => state.user);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({
@@ -86,9 +88,6 @@ const StartAssessment = ({ assessment }) => {
       }
     }
 
-    console.log(newAssessmentAnswer);
-    console.log(newAssessmentAnswer.length);
-
     try {
       const { data } = await submitAssessment(newAssessmentAnswer, token);
       setLoadingSubmit(false);
@@ -100,6 +99,10 @@ const StartAssessment = ({ assessment }) => {
         setErrorMessage(err.response.data.message);
       }
     }
+  };
+
+  const handleSubmitted = () => {
+    router.replace('dashboard');
   };
 
   useEffect(() => {
@@ -250,13 +253,12 @@ const StartAssessment = ({ assessment }) => {
             <span className='text-primaryGreen'>Your score:</span>{' '}
             {assessmentResult.score}/{assessmentResult.totalQuestion}
           </p>
-          <Link
-            href={'/dashboard'}
-            onClick={() => setModalState(false)}
+          <button
+            onClick={() => handleSubmitted()}
             className='my-6 bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
           >
             Ok
-          </Link>
+          </button>
         </div>
       </ModalDialog>
     </>

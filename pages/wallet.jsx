@@ -7,6 +7,7 @@ import { FiSearch } from 'react-icons/fi';
 import { transactionColumns } from '../components/TableData';
 import differenceBy from 'lodash/differenceBy';
 import { getUserWallet } from '../services/userService';
+import WithdrawModal from '../components/WithdrawModal';
 
 const SearchComponent = ({ onFilter, filterText }) => (
   <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white flex w-4/5 md:w-[325px] h-[42px] py-[12-x] px-[16px] items-center border border-[#D1D5DB] bg-[#F9FAFB] rounded-lg mb-[16px]'>
@@ -29,6 +30,7 @@ const Wallet = () => {
     wallet: 0,
     transactions: [],
   });
+  const [modalState, setModalState] = useState(false);
 
   const filteredItems = userWallet.transactions.filter((item) => {
     return (
@@ -155,7 +157,10 @@ const Wallet = () => {
                 <button className='bg-transparent border border-primaryGreen hover:bg-primaryGreen text-primaryGreen hover:text-white px-5 py-3 flex items-center justify-center rounded'>
                   Convert to data/Airtime
                 </button>
-                <button className=' bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'>
+                <button
+                  onClick={() => setModalState(!modalState)}
+                  className=' bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
+                >
                   Withdraw
                 </button>
               </div>
@@ -168,6 +173,7 @@ const Wallet = () => {
               }}
             >
               {subHeaderComponentMemo}
+
               <DataTableBase
                 columns={transactionColumns}
                 data={filteredItems}
@@ -179,6 +185,7 @@ const Wallet = () => {
             </div>
           </div>
         </div>
+        <WithdrawModal showModal={modalState} setModalState={setModalState} />
       </DashboardLayout>
     </>
   );

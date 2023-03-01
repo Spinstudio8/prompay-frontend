@@ -22,6 +22,7 @@ const assessment = () => {
   const handleStart = async () => {
     console.log('start');
     setLoadingStart(true);
+    setErrorMessage('');
 
     try {
       const { data } = await startAssessment(token);
