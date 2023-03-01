@@ -87,6 +87,7 @@ const StartAssessment = ({ assessment }) => {
     }
 
     console.log(newAssessmentAnswer);
+    console.log(newAssessmentAnswer.length);
 
     try {
       const { data } = await submitAssessment(newAssessmentAnswer, token);

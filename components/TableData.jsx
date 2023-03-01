@@ -171,7 +171,7 @@ export const transactionColumns = [
   },
 ];
 
-export const assessmentColumns = [
+export const paymentColumns = [
   {
     name: 'ASSESSMENTS',
     selector: (row) => row.assessment,

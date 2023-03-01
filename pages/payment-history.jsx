@@ -35,7 +35,7 @@ const PaymentHistory = () => {
   const filteredItems = userWallet.payments.filter((item) => {
     return (
       (item.assessment &&
-        item.asessment.toLowerCase().includes(filterText.toLowerCase())) ||
+        item.assessment.toLowerCase().includes(filterText.toLowerCase())) ||
       (item.date &&
         item.date.toLowerCase().includes(filterText.toLowerCase())) ||
       (item.amount && item.amount.toString().includes(filterText.toString())) ||
@@ -57,6 +57,7 @@ const PaymentHistory = () => {
       try {
         const { data } = await getUserWallet(tokenPayload.id, token);
         setUserWallet(data);
+        console.log(data);
         setRows(data.payments);
         setPending(false);
       } catch (err) {
