@@ -52,7 +52,7 @@ export const userLinks = [
       {
         name: 'support',
         icon: <BiSupport />,
-        path: 'support',
+        path: 'dashboard',
       },
     ],
   },
@@ -65,7 +65,7 @@ export const adminLinks = [
       {
         name: 'overview',
         icon: <MdOutlineDashboard />,
-        path: 'overview',
+        path: 'dashboard',
       },
     ],
   },
@@ -76,12 +76,12 @@ export const adminLinks = [
       {
         name: 'admins',
         icon: <BiUserCircle />,
-        path: 'admins',
+        path: 'dashboard',
       },
       {
         name: 'manage users',
         icon: <ImUsers />,
-        path: 'manage-users',
+        path: 'dashboard',
       },
       {
         name: 'manage questions',
@@ -101,12 +101,12 @@ export const adminLinks = [
       {
         name: 'support',
         icon: <BiSupport />,
-        path: 'support',
+        path: 'dashboard',
       },
       {
         name: 'platform settings',
         icon: <MdOutlineSettings />,
-        path: 'platform-settings',
+        path: 'dashboard',
       },
     ],
   },
