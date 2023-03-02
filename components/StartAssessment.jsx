@@ -34,11 +34,13 @@ const StartAssessment = ({ assessment }) => {
 
   const handlePrevNext = (button) => {
     if (button === 'prev') {
-      const current = currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 9;
+      const current =
+        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 49;
       setCurrentQuestionNumber(current);
     }
     if (button === 'next') {
-      const current = currentQuestionNumber < 9 ? currentQuestionNumber + 1 : 0;
+      const current =
+        currentQuestionNumber < 49 ? currentQuestionNumber + 1 : 0;
       setCurrentQuestionNumber(current);
     }
     console.log(assessmentAnswer);
