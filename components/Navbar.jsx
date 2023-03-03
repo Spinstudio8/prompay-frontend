@@ -89,7 +89,7 @@ const Navbar = () => {
 
   return (
     <div
-      className='flex justify-between p-2 relative bg-white dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'
+      className='flex justify-between p-2 relative bg-white dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white z-[1000]'
       //   style={{ borderBottom: "0.6px solid #878787" }}
     >
       <NavButton
@@ -138,7 +138,7 @@ const Navbar = () => {
 
           <ul
             className={`${
-              dropDown ? 'top-[40px] opacity-100 pb-6 z-20 ' : 'hidden'
+              dropDown ? 'top-[40px] opacity-100 pb-6' : 'hidden'
             } absolute  bg-white py-4  px-4 font-normal text-xl w-[149px]`}
             style={{
               zIndex: 2,
