@@ -8,15 +8,10 @@ import Footer from '../components/Footer';
 import Meta from '../components/Meta';
 import Animation from '../components/Animation';
 import { useRouter, withRouter } from 'next/router';
-import Cookies from 'js-cookie';
 
 export default function Home() {
   const token = useSelector((state) => state.user.token);
   const router = useRouter().pathname;
-
-  useEffect(() => {
-    Cookies.remove('email');
-  }, []);
 
   return (
     <>

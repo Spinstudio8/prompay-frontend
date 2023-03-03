@@ -58,8 +58,8 @@ const dashboard = () => {
     <>
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white pt-[50px] md:pt-0'>
-          <div className='md:flex w-[100%] gap-x-[13px] md:ml-[20px] pb-[15px]'>
-            <div className=' md:w-[65%] mt-[30px] bg-white shadow pb-[30px] flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white '>
+          <div className='flex flex-col lg:flex-row w-[100%] gap-x-[13px] lg:ml-[20px] pb-[15px]'>
+            <div className='lg:w-[65%] order-1 lg:order-[0] mt-[30px] bg-white shadow pb-[30px] flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white '>
               {!loadingDashboard && (
                 <>
                   <div className=' md:flex items-center gap-x-[15px] px-[25px] pt-[30px] '>
@@ -150,8 +150,8 @@ const dashboard = () => {
               )}
               {loadingDashboard && <div className='mt-6'>Loading...</div>}
             </div>
-            <div className='bg-white shadow h-[100vh] mt-[30px] md:w-[29%] pt-[18px] flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'>
-              <div className=''>
+            <div className='bg-white shadow mt-[30px] lg:w-[29%] pt-[18px] pb-[38px]  flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'>
+              <div className='flex flex-col sm:flex-row lg:flex-col gap-10'>
                 <div
                   className='w-[280px] h-[180px] flex flex-col justify-center text-white dark:border mt-[20px] mx-[10px] dark:border-gray-200 rounded-[4px] shadow z-10'
                   style={{
@@ -172,7 +172,7 @@ const dashboard = () => {
                     </p>
                   </div>
                 </div>
-                <div className='px-[10px] pt-[30px] md:pt-[105px]'>
+                <div className=''>
                   <Link href='/reservations'>
                     <div
                       className='w-[280px] h-[111px] flex flex-col justify-center text-white dark:border mt-[20px] mx-[10px] dark:border-gray-200 rounded-[4px] shadow z-10'
