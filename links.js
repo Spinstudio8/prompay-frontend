@@ -65,7 +65,7 @@ export const adminLinks = [
       {
         name: 'overview',
         icon: <MdOutlineDashboard />,
-        path: 'dashboard',
+        path: 'overview',
       },
     ],
   },
@@ -87,6 +87,11 @@ export const adminLinks = [
         name: 'manage questions',
         icon: <BsQuestionSquareFill />,
         path: 'manage-questions',
+      },
+      {
+        name: 'manage withdrawals',
+        icon: <MdOutlinePayments />,
+        path: 'manage-withdrawals',
       },
       {
         name: 'wallet',
