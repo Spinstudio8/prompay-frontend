@@ -114,7 +114,7 @@ const StartAssessment = ({ assessment }) => {
     <>
       <div className='mt-[25px] md:mt-[40px]'>
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
-          {currentQuestion?.subject.title}
+          {currentQuestion?.subject.title}:
         </h3>
         <div className='relative w-full'>
           {assessment.questions.map((item, index) => (
@@ -124,7 +124,7 @@ const StartAssessment = ({ assessment }) => {
                 index === currentQuestionNumber ? 'block' : 'hidden'
               }`}
             >
-              <p className='font-[400] text-[18px] leading-6'>
+              <p className='font-[400] mb-1 text-[18px] leading-6'>
                 Question {currentQuestionNumber + 1} of{' '}
                 {assessment.questions.length}
               </p>
