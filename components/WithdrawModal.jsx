@@ -48,7 +48,7 @@ const WithdrawModal = ({ showModal, setModalState }) => {
   return (
     <>
       {showModal && (
-        <div className='bg-[rgba(0,0,0,0.8)] w-screen min-h-screen fixed top-0 left-0 flex justify-center items-center z-[4000]'>
+        <div className='bg-[rgba(0,0,0,0.8)] w-screen h-screen overflow-y-auto fixed top-0 right-0 left-0 flex justify-center items-center z-[10000]'>
           <div className='w-[90%] sm:w-[60%] lg:w-[40%] bg-white rounded-lg px-6 py-8 flex flex-col items-center'>
             <h2 className='font-[500] text-[24px] leading-7 mb-10'>
               Withdraw from your account
