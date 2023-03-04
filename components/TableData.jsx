@@ -225,3 +225,58 @@ export const paymentColumns = [
     },
   },
 ];
+
+export const withdrawalColumns = [
+  {
+    name: 'WITHDRAWAL',
+    selector: (row) => row._id,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'AMOUNT',
+    selector: (row) => row.amount,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#6B7280',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'STATUS',
+    selector: (row) => row.status,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 500,
+    },
+  },
+  {
+    name: 'DATE',
+    selector: (row) => row.createdAt,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      //   color: "#03543F",
+      fontSize: '14px',
+      fontWeight: 400,
+      //   backgroundColor: "#DEF7EC",
+      borderRadius: '6px',
+      //   marginLeft: "20px",
+      //   marginRight: "120px",
+    },
+  },
+];

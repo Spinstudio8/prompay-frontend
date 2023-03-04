@@ -20,3 +20,21 @@ export function withdraw(info, token) {
     }
   );
 }
+
+export function getWithdrawals(status, token) {
+  return http.get(`${apiEndpoint}?status=${status}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export function getWithdrawalById(id, token) {
+  return http.get(`${apiEndpoint}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
