@@ -18,7 +18,7 @@ const WithdrawalRequest = () => {
       try {
         console.log(id);
         const { data } = await getWithdrawalById(id, token);
-        console(data);
+        console.log(data);
         setWithdrawal(data);
         setLoading(false);
       } catch (error) {
