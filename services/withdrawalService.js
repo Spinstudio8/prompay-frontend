@@ -38,3 +38,16 @@ export function getWithdrawalById(id, token) {
     },
   });
 }
+
+export function processWithdrawal(id, action, token) {
+  return http.patch(
+    `${apiEndpoint}/${id}/process`,
+    { action: action },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+}
