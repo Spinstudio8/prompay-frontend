@@ -26,21 +26,6 @@ export default function Home() {
           }}
         />
         <Nav path={router} />
-        {/* overlay */}
-        {/* <div
-        className="absolute top-0 left-0 right-0 bottom-[-20px]  z-[1]"
-        style={{
-          background:
-            "linear-gradient(84.59deg, rgba(0, 0, 0, 0.58) 17.84%, rgba(0, 0, 0, 0.17) 52.14%, rgba(0, 0, 0, 0.65) 80.9%)",
-        }}
-      /> */}
-        {/* background image */}
-        {/* <img
-        src="/images/bg/home.png"
-        layout="fill"
-        className="object-cover h-[130vh] w-[100vw]"
-      /> */}
-
         <div className='flex flex-col items-center md:items-end justify-center relative text-white z-10 md:pr-[27px] text-center h-[65%]'>
           <div className='w-full md:w-[538px] md:mt-[0px]'>
             <h1 className='text-white text-[40px] md:text-[100px] font-[700] leading-[50px] md:leading-[100px] '>
