@@ -131,7 +131,7 @@ export const transactionColumns = [
   },
   {
     name: 'DATE',
-    selector: (row) => row.date,
+    selector: (row) => new Date(row.date).toDateString(),
     sortable: true,
     reorder: true,
     grow: 2,
@@ -186,7 +186,7 @@ export const paymentColumns = [
   },
   {
     name: 'DATE',
-    selector: (row) => row.date,
+    selector: (row) => new Date(row.date).toDateString(),
     sortable: true,
     reorder: true,
     grow: 2,
@@ -265,7 +265,7 @@ export const withdrawalColumns = [
   },
   {
     name: 'DATE',
-    selector: (row) => row.createdAt,
+    selector: (row) => new Date(row.createdAt).toDateString(),
     sortable: true,
     reorder: true,
     grow: 2,

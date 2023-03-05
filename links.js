@@ -76,7 +76,7 @@ export const adminLinks = [
       {
         name: 'admins',
         icon: <BiUserCircle />,
-        path: 'dashboard',
+        path: 'admins',
       },
       {
         name: 'manage users',
