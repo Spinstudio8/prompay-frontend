@@ -55,7 +55,7 @@ const ManageWithdrawals = () => {
   React.useEffect(() => {
     const getAllWithdrawals = async () => {
       try {
-        const { data } = await getWithdrawals(filterText, token);
+        const { data } = await getWithdrawals(token);
         setWithdrawals(data);
         setRows(data);
         setPending(false);
@@ -65,7 +65,7 @@ const ManageWithdrawals = () => {
     };
 
     getAllWithdrawals();
-  }, [filterText]);
+  }, []);
 
   const subHeaderComponentMemo = React.useMemo(() => {
     const handleClear = () => {
@@ -83,17 +83,6 @@ const ManageWithdrawals = () => {
       />
     );
   }, [filterText, resetPaginationToggle]);
-
-  const handleAll = async () => {
-    try {
-      const { data } = await getWithdrawals('', token);
-      setWithdrawals(data);
-      setRows(data);
-      setPending(false);
-    } catch (error) {
-      setPending(true);
-    }
-  };
 
   const viewWithdrawal = (withdrawal) => {
     router.push(`/manage-withdrawals/${withdrawal._id}`);
@@ -118,17 +107,14 @@ const ManageWithdrawals = () => {
             >
               <div className='flex gap-6 items-start'>
                 {subHeaderComponentMemo}{' '}
-                <button
-                  onClick={handleAll}
-                  className='rounded-md text-center bg-primaryGreen text-white p-2 flex items-center justify-center w-max h-[35px]'
-                >
+                <button className='rounded-md text-center bg-primaryGreen text-white p-2 flex items-center justify-center w-max h-[35px]'>
                   All
                 </button>
               </div>
 
               <DataTableBase
                 columns={withdrawalColumns}
-                data={withdrawals}
+                data={filteredItems}
                 progressPending={pending}
                 clearSelectedRows={toggleCleared}
                 onRowClicked={(row, event) => viewWithdrawal(row)}
