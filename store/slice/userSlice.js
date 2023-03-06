@@ -16,6 +16,8 @@ const initialState = {
   tokenPayload: {},
   verificationEmail: null,
   users: [],
+  adminViewAdminProfile: null,
+  adminViewUserProfile: null,
 };
 
 export const userSlice = createSlice({
@@ -30,6 +32,8 @@ export const userSlice = createSlice({
       state.userInfo = null;
       state.token = null;
       state.tokenPayload = null;
+      state.adminViewAdminProfile = null;
+      state.adminViewUserProfile = null;
     },
     setUser: (state, action) => {
       state.userInfo = action.payload.user;
@@ -43,6 +47,12 @@ export const userSlice = createSlice({
     removeVerificationEmail: (state, action) => {
       state.verificationEmail = null;
     },
+    setAdminViewAdminProfile: (state, action) => {
+      state.adminViewAdminProfile = action.payload;
+    },
+    setAdminViewUserProfile: (state, action) => {
+      state.adminViewAdminProfile = action.payload;
+    },
   },
 });
 
@@ -52,6 +62,8 @@ export const {
   setUser,
   setUsers,
   setVerificationEmail,
+  setAdminViewAdminProfile,
+  setAdminViewUserProfile,
   removeVerificationEmail,
 } = userSlice.actions;
 

@@ -1,12 +1,13 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
+import React, { useState, useEffect } from 'react';
+import DashboardLayout from '../../components/DashboardLayout';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import DataTableBase from '../components/DataTableBase';
+import { useSelector, useDispatch } from 'react-redux';
+import DataTableBase from '../../components/DataTableBase';
 import { FiSearch } from 'react-icons/fi';
-import { withdrawalColumns } from '../components/TableData';
-import { getWithdrawals } from '../services/withdrawalService';
+import { adminColumns } from '../../components/TableData';
+import { getAdminUsers } from '../../services/adminService';
+import { setAdminViewAdminProfile } from '../../store/slice/userSlice';
 
 const SearchComponent = ({ onFilter, filterText }) => (
   <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white flex w-4/5 md:w-[325px] h-[42px] py-[12-x] px-[16px] items-center border border-[#D1D5DB] bg-[#F9FAFB] rounded-lg mb-[16px]'>
@@ -24,47 +25,46 @@ const SearchComponent = ({ onFilter, filterText }) => (
 
 const Admins = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
-  const [withdrawals, setWithdrawals] = useState([]);
+  const [admins, setAdmins] = useState([]);
 
-  const [filterText, setFilterText] = React.useState('pending');
-  const filteredItems = withdrawals.filter((item) => {
+  const [filterText, setFilterText] = React.useState('');
+  const filteredItems = admins.filter((item) => {
     return (
-      (item._id && item._id.toLowerCase().includes(filterText.toLowerCase())) ||
-      (item.amount &&
-        item.amount
+      (item.firstName &&
+        item.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
+      (item.phone &&
+        item.phone
           .toString()
           .toLowerCase()
           .includes(filterText.toLowerCase())) ||
-      (item.status &&
-        item.status.toLowerCase().includes(filterText.toLowerCase())) ||
       (item.createdAt &&
-        item.createdAt.toLowerCase().includes(filterText.toLowerCase()))
+        item.createdAt.toLowerCase().includes(filterText.toLowerCase())) ||
+      (item.updatedAt &&
+        item.updatedAt.toLowerCase().includes(filterText.toLowerCase()))
     );
   });
 
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);
   const [pending, setPending] = React.useState(true);
-  const [rows, setRows] = React.useState([]);
-  const [selectedRows, setSelectedRows] = React.useState([]);
   const [toggleCleared, setToggleCleared] = React.useState(false);
   const [data, setData] = React.useState(filteredItems);
 
   React.useEffect(() => {
-    const getAllWithdrawals = async () => {
+    const getAllAdmins = async () => {
       try {
-        const { data } = await getWithdrawals(filterText, token);
-        setWithdrawals(data);
-        setRows(data);
+        const { data } = await getAdminUsers(token);
+        setAdmins(data);
         setPending(false);
       } catch (error) {
         setPending(true);
       }
     };
 
-    getAllWithdrawals();
-  }, [filterText]);
+    getAllAdmins();
+  }, []);
 
   const subHeaderComponentMemo = React.useMemo(() => {
     const handleClear = () => {
@@ -83,19 +83,9 @@ const Admins = () => {
     );
   }, [filterText, resetPaginationToggle]);
 
-  const handleAll = async () => {
-    try {
-      const { data } = await getWithdrawals('', token);
-      setWithdrawals(data);
-      setRows(data);
-      setPending(false);
-    } catch (error) {
-      setPending(true);
-    }
-  };
-
-  const viewWithdrawal = (withdrawal) => {
-    router.push(`/manage-withdrawals/${withdrawal._id}`);
+  const viewUser = (admin) => {
+    dispatch(setAdminViewAdminProfile(admin));
+    router.push(`/admins/profile`);
   };
 
   return (
@@ -105,7 +95,7 @@ const Admins = () => {
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div className='flex justify-between mb-[20px] md:mb-[49px]'>
               <h2 className='font-[500] text-[24px] leading-7'>
-                Withdrawal Requests
+                Prompay Admins
               </h2>
             </div>
             <div
@@ -115,22 +105,13 @@ const Admins = () => {
                   '0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.1)',
               }}
             >
-              <div className='flex gap-6 items-start'>
-                {subHeaderComponentMemo}{' '}
-                <button
-                  onClick={handleAll}
-                  className='rounded-md text-center bg-primaryGreen text-white p-2 flex items-center justify-center w-max h-[35px]'
-                >
-                  All
-                </button>
-              </div>
-
+              {subHeaderComponentMemo}{' '}
               <DataTableBase
-                columns={withdrawalColumns}
-                data={withdrawals}
+                columns={adminColumns}
+                data={admins}
                 progressPending={pending}
                 clearSelectedRows={toggleCleared}
-                onRowClicked={(row, event) => viewWithdrawal(row)}
+                onRowClicked={(row, event) => viewUser(row)}
               />
             </div>
           </div>

@@ -10,3 +10,12 @@ export function getOverview(token) {
     },
   });
 }
+
+export function getAdminUsers(token) {
+  return http.get(`${apiEndpoint}/admin-users`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}

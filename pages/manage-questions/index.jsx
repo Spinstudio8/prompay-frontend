@@ -136,7 +136,7 @@ const ManageQuestions = () => {
               {subHeaderComponentMemo}
               <DataTableBase
                 columns={questionColumns}
-                data={questions}
+                data={filteredItems}
                 progressPending={pending}
                 contextActions={contextActions}
                 onSelectedRowsChange={handleRowSelected}

@@ -21,8 +21,8 @@ export function withdraw(info, token) {
   );
 }
 
-export function getWithdrawals(status, token) {
-  return http.get(`${apiEndpoint}?status=${status}`, {
+export function getWithdrawals(token) {
+  return http.get(`${apiEndpoint}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,

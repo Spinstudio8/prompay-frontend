@@ -280,3 +280,58 @@ export const withdrawalColumns = [
     },
   },
 ];
+
+export const adminColumns = [
+  {
+    name: 'NAME',
+    selector: (row) => `${row.firstName} ${row.lastName}`,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'PHONE',
+    selector: (row) => row.phone,
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#6B7280',
+      fontSize: '14px',
+      fontWeight: 400,
+    },
+  },
+  {
+    name: 'JOINED',
+    selector: (row) => new Date(row.createdAt).toDateString(),
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      color: '#111928',
+      fontSize: '14px',
+      fontWeight: 500,
+    },
+  },
+  {
+    name: 'LAST UPDATED',
+    selector: (row) => new Date(row.updatedAt).toDateString(),
+    sortable: true,
+    reorder: true,
+    grow: 2,
+    style: {
+      //   color: "#03543F",
+      fontSize: '14px',
+      fontWeight: 400,
+      //   backgroundColor: "#DEF7EC",
+      borderRadius: '6px',
+      //   marginLeft: "20px",
+      //   marginRight: "120px",
+    },
+  },
+];

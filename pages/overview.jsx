@@ -59,7 +59,7 @@ const overview = () => {
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white pt-[50px] md:pt-0'>
           <div className='flex flex-col lg:flex-row w-[100%] gap-x-[13px] lg:ml-[20px] pb-[15px]'>
-            <div className='lg:w-[65%] order-1 lg:order-[0] mt-[30px] bg-white shadow pb-[30px] flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white '>
+            <div className='lg:w-[65%] lg:h-[90vh] order-1 lg:order-[0] mt-[30px] bg-white shadow pb-[30px] flex flex-col items-center dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white '>
               {!loadingOverview && (
                 <>
                   <div className=' md:flex items-center gap-x-[15px] px-[25px] pt-[30px] '>
@@ -114,11 +114,13 @@ const overview = () => {
                       textColor='#33F110'
                     />
                     {/* </Link> */}
-                  </div>
-                  <div className=' md:flex items-center gap-x-[15px] px-[20px] '>
-                    {/* <Link href="/candidates"> */}
-
-                    {/* </Link> */}
+                    <DashboardCard
+                      icon='/images/icon/current.png'
+                      figure={''}
+                      title={'Admin Dashboard'}
+                      bg='#E7FDE3'
+                      textColor='#33F110'
+                    />
                   </div>
                 </>
               )}
