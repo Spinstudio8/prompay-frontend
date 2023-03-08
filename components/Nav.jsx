@@ -8,7 +8,7 @@ const Nav = ({ path }) => {
   const token = useSelector((state) => state.user.token);
 
   const currentPath = useRouter().pathname;
-  console.log(currentPath);
+
   const [menu, setMenu] = useState(false);
   const handleMenu = () => {
     if (menu) {

@@ -43,7 +43,12 @@ const Signin = () => {
         router.replace('/dashboard');
       } catch (err) {
         const res = err.response;
-        if (res.status === 401 && res.data && res.data.isVerified === false) {
+        if (
+          res &&
+          res.status === 401 &&
+          res.data &&
+          res.data.isVerified === false
+        ) {
           setNotVerifiedPopupState(!notVerifiedPopupState);
         }
         setIsError(true);
