@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
-import { getAdminUsers } from '../../services/adminService';
 import Loader from '../../components/Loader';
 import { toDateString, toHtmlDate } from '../../utils/dateHelper';
 import { adminUpdateUser } from '../../services/userService';
