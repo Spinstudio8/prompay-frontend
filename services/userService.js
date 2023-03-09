@@ -136,17 +136,29 @@ export function deleteUser(id) {
 }
 
 export function resetPassword(email) {
-  return http.post(apiEndpoint + '/reset-password', { email }, config);
+  return http.post(
+    apiEndpoint + '/reset-password',
+    { email },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 }
 
-export function getNewPassword(token) {
-  return http.get(`${apiEndpoint}/new-password/${token}`);
+export function verifyPasswordToken(passwordToken) {
+  return http.get(`${apiEndpoint}/verify-password-token/${passwordToken}`);
 }
 
 export function setNewPassword(userId, passwordToken, password) {
   return http.post(
     `${apiEndpoint}/new-password`,
     { userId, passwordToken, password },
-    config
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
   );
 }

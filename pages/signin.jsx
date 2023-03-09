@@ -144,8 +144,11 @@ const Signin = () => {
                     Remember Me
                   </label>
                 </div>
-                <Link href='#' className='text-[#667085]'>
-                  Forgot Password
+                <Link
+                  href='/reset-password'
+                  className='text-[#667085] underline'
+                >
+                  Forgot Password ?
                 </Link>
               </div>
               <div className='flex gap-[24px] justify-center mt-[20px] mb-3 md:mt-[60]'>
