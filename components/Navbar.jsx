@@ -192,7 +192,7 @@ const Navbar = () => {
           <NavButton
             title='Notifications'
             dotColor='#03c9D7'
-            customFunc={() => setNotificationdropDown(!notificationdropDown)}
+            customFunc={() => setNotificationdropDown(notificationdropDown)}
             color='blue'
             icon={<RiNotification3Line />}
           />
