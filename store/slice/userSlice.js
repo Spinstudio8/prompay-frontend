@@ -36,7 +36,11 @@ export const userSlice = createSlice({
       state.adminViewUserProfile = null;
     },
     setUser: (state, action) => {
-      state.userInfo = action.payload.user;
+      state.userInfo = action.payload.userInfo;
+    },
+    setUpdateUser: (state, action) => {
+      const userInfo = action.payload.userInfo;
+      state.userInfo = { ...state.userInfo, ...userInfo, token: undefined };
     },
     setUsers: (state, action) => {
       state.users = action.payload.users;
@@ -60,6 +64,7 @@ export const {
   setLogin,
   setLogout,
   setUser,
+  setUpdateUser,
   setUsers,
   setVerificationEmail,
   setAdminViewAdminProfile,

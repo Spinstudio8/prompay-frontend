@@ -10,7 +10,11 @@ import Meta from '../components/Meta';
 import { login } from '../services/authService';
 import ButtonLoader from '../components/ButtonLoader';
 import NotVerifiedPopup from '../components/NotVerifiedPopup';
-import { setLogin, removeVerificationEmail } from '../store/slice/userSlice';
+import {
+  setLogin,
+  removeVerificationEmail,
+  setUser,
+} from '../store/slice/userSlice';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -39,6 +43,7 @@ const Signin = () => {
       try {
         const { data } = await login(state);
         dispatch(setLogin(data.token));
+        dispatch(setUser({ userInfo: data.userInfo }));
         setIsError(false);
         router.replace('/dashboard');
       } catch (err) {

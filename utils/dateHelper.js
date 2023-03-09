@@ -19,3 +19,23 @@ export function toDateString(string) {
 
   return customFormat;
 }
+
+export function toHtmlDate(string) {
+  let date = new Date(string);
+
+  //   console.log(date.getFullYear());
+  //   console.log(date.getMonth());
+  //   console.log(date.getDate());
+
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+
+  // concat 0 if month and day is less than 10
+  month = month < 10 ? '0' + month : month;
+  day = day < 10 ? '0' + day : day;
+
+  // make date a suitable format for html "(year-mm-dd)"
+  date = `${date.getFullYear()}-${month}-${day}`;
+
+  return date;
+}

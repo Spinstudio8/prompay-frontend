@@ -102,28 +102,33 @@ export function updateUserProfile(data, id, token) {
   );
 }
 
+export function adminUpdateUser(data, id, token) {
+  return http.patch(
+    `${apiEndpoint}/${id}`,
+    {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      gender: data.gender,
+      location: data.location,
+      role: data.role,
+      isAdmin: data.isAdmin,
+      hasAuthority: data.hasAuthority,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+}
+
 export function getUsers(currentPage) {
   return http.get(`${apiEndpoint}?pageNumber=${currentPage}`, config);
 }
 
 export function getUserById(id) {
   return http.get(apiEndpoint + '/' + id, config);
-}
-
-export function adminUpdateUser(user, id) {
-  return http.put(
-    apiEndpoint + '/' + id,
-    {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      phone: user.phone,
-      country: user.country,
-      level: user.level,
-      isAdmin: user.isAdmin,
-    },
-    config
-  );
 }
 
 export function deleteUser(id) {

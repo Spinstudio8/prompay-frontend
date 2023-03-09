@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import DashboardLayout from '../components/DashboardLayout';
 import { getUserProfile, updateUserProfile } from '../services/userService';
 import Loader from '../components/Loader';
-import { toDateString } from '../utils/dateHelper';
-import { setUser, setLogin } from '../store/slice/userSlice';
+import { toDateString, toHtmlDate } from '../utils/dateHelper';
+import { setUpdateUser, setLogin } from '../store/slice/userSlice';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Profile = () => {
     isAdmin: '',
     isVerified: '',
     createdAt: '',
+    birthDay: '',
     updatedAt: '',
   });
   const [userProfileLoading, setUserProfileLoading] = useState(true);
@@ -33,9 +34,7 @@ const Profile = () => {
     const getUser = async () => {
       try {
         const { data } = await getUserProfile(tokenPayload.id, token);
-        console.log(data);
         setUserProfile({ ...userProfile, ...data });
-        dispatch(setUser({ user: data }));
         setFullName(`${data.firstName} ${data.lastName}`);
         setUserProfileLoading(false);
       } catch (error) {
@@ -76,8 +75,12 @@ const Profile = () => {
         token
       );
       setUserProfile({ ...userProfile, ...data, token: undefined });
-      dispatch(setLogin(data.token)); // update user token
-      dispatch(setUser({ user: data }));
+      dispatch(setLogin(data.token));
+      dispatch(
+        setUpdateUser({
+          userInfo: data,
+        })
+      ); // update user token
       setFullName(`${data.firstName} ${data.lastName}`);
       setUserProfileLoading(false);
     } catch (error) {
@@ -93,7 +96,7 @@ const Profile = () => {
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
-            <div className='flex justify-between mb-[20px] md:mb-[49px] text-center'>
+            <div className='flex justify-center mb-[20px] md:mb-[49px]'>
               <h2 className='font-[500] text-[24px] leading-7'>Profile</h2>
             </div>
             <div
@@ -213,6 +216,20 @@ const Profile = () => {
                               disabled={true}
                             />
                           </div>
+                        </div>
+                        <div className='mb-4'>
+                          <label htmlFor='birthDay' className='block'>
+                            Birth Day
+                          </label>
+                          <input
+                            type='date'
+                            name='birthDay'
+                            id='birthDay'
+                            value={toHtmlDate(userProfile.birthDay)}
+                            className='bg-light-gray border-black border rounded pl-2 py-1 w-full'
+                            onChange={(e) => handleChange(e)}
+                            disabled={true}
+                          />
                         </div>
                         <div className='mb-4'>
                           <label htmlFor='email' className='block'>
