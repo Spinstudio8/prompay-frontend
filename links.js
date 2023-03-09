@@ -81,7 +81,7 @@ export const adminLinks = [
       {
         name: 'manage users',
         icon: <ImUsers />,
-        path: 'dashboard',
+        path: 'manage-users',
       },
       {
         name: 'manage questions',

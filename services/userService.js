@@ -123,8 +123,13 @@ export function adminUpdateUser(data, id, token) {
   );
 }
 
-export function getUsers(currentPage) {
-  return http.get(`${apiEndpoint}?pageNumber=${currentPage}`, config);
+export function getUsers(token) {
+  return http.get(`${apiEndpoint}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
 }
 
 export function getUserById(id) {

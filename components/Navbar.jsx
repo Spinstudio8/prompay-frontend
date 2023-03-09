@@ -162,10 +162,10 @@ const Navbar = () => {
                 Wallet
               </Link>
             </li>
-            <li className='mb-6'>
+            <li className='mb-3'>
               <Link
                 className='text-[#374151] hover:text-primary_blue-200 duration-500 font-[400] text-[14px] leading-6'
-                href='/settings'
+                href='/dashboard'
               >
                 Settings
               </Link>

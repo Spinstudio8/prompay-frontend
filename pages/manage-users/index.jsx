@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import DataTableBase from '../../components/DataTableBase';
 import { FiSearch } from 'react-icons/fi';
-import { adminColumns } from '../../components/TableData';
-import { getAdminUsers } from '../../services/adminService';
-import { setAdminViewAdminProfile } from '../../store/slice/userSlice';
+import { userColumns } from '../../components/TableData';
+import { getUsers } from '../../services/userService';
+import { setAdminViewUserProfile } from '../../store/slice/userSlice';
 
 const SearchComponent = ({ onFilter, filterText }) => (
   <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white flex w-4/5 md:w-[325px] h-[42px] py-[12-x] px-[16px] items-center border border-[#D1D5DB] bg-[#F9FAFB] rounded-lg mb-[16px]'>
@@ -23,14 +23,14 @@ const SearchComponent = ({ onFilter, filterText }) => (
   </div>
 );
 
-const Admins = () => {
+const ManageUsers = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
-  const [admins, setAdmins] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const [filterText, setFilterText] = React.useState('');
-  const filteredItems = admins.filter((item) => {
+  const filteredItems = users.filter((item) => {
     return (
       (item.firstName &&
         item.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
@@ -53,17 +53,17 @@ const Admins = () => {
   const [data, setData] = React.useState(filteredItems);
 
   React.useEffect(() => {
-    const getAllAdmins = async () => {
+    const getAllUsers = async () => {
       try {
-        const { data } = await getAdminUsers(token);
-        setAdmins(data);
+        const { data } = await getUsers(token);
+        setUsers(data);
         setPending(false);
       } catch (error) {
         setPending(true);
       }
     };
 
-    getAllAdmins();
+    getAllUsers();
   }, []);
 
   const subHeaderComponentMemo = React.useMemo(() => {
@@ -83,9 +83,9 @@ const Admins = () => {
     );
   }, [filterText, resetPaginationToggle]);
 
-  const viewUser = (admin) => {
-    dispatch(setAdminViewAdminProfile(admin));
-    router.push(`/admins/profile`);
+  const viewUser = (selectedUser) => {
+    dispatch(setAdminViewUserProfile(selectedUser));
+    router.push(`/manage-users/profile`);
   };
 
   return (
@@ -95,7 +95,7 @@ const Admins = () => {
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div className='flex justify-between mb-[20px] md:mb-[49px]'>
               <h2 className='font-[500] text-[24px] leading-7'>
-                Prompay Admins
+                Prompay Users
               </h2>
             </div>
             <div
@@ -107,7 +107,7 @@ const Admins = () => {
             >
               {subHeaderComponentMemo}{' '}
               <DataTableBase
-                columns={adminColumns}
+                columns={userColumns}
                 data={filteredItems}
                 progressPending={pending}
                 clearSelectedRows={toggleCleared}
@@ -121,4 +121,4 @@ const Admins = () => {
   );
 };
 
-export default Admins;
+export default ManageUsers;

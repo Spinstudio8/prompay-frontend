@@ -55,7 +55,7 @@ export const userSlice = createSlice({
       state.adminViewAdminProfile = action.payload;
     },
     setAdminViewUserProfile: (state, action) => {
-      state.adminViewAdminProfile = action.payload;
+      state.adminViewUserProfile = action.payload;
     },
   },
 });
