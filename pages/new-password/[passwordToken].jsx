@@ -55,6 +55,7 @@ const NewPassword = () => {
 
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match');
+      setLoadingSubmit(false);
       return;
     }
 
