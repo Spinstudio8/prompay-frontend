@@ -125,7 +125,7 @@ const Wallet = () => {
     <>
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
-          <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
+          <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px] text-black'>
             <h2 className='font-[500] text-[24px] leading-7'>Wallets</h2>
             <div className='flex items-center justify-center md:justify-start'>
               <div
