@@ -41,12 +41,7 @@ const Profile = () => {
   };
 
   const refresh = async () => {
-    // try {
-    //   const { data } = await getUserProfile(tokenPayload.id, token);
-    //   setUserProfile({ ...userProfile, ...data });
-    // } catch (error) {
-    //   // console.error(error);
-    // }
+    // setUserProfile({ ...adminViewUserProfile });
   };
 
   const updateProfile = async () => {
@@ -300,4 +295,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAdminAuth(Profile);

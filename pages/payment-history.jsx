@@ -7,6 +7,7 @@ import { FiSearch } from 'react-icons/fi';
 import { paymentColumns } from '../components/TableData';
 import differenceBy from 'lodash/differenceBy';
 import { getUserWallet } from '../services/userService';
+import withLoginAuth from '../auth/withLoginAuth';
 
 // import Export from "react-data-table-component";
 
@@ -155,4 +156,4 @@ const PaymentHistory = () => {
   );
 };
 
-export default PaymentHistory;
+export default withLoginAuth(PaymentHistory);

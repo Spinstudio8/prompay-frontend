@@ -7,6 +7,7 @@ import Meta from '../components/Meta';
 import ButtonLoader from '../components/ButtonLoader';
 import { resetPassword } from '../services/userService';
 import ModalDialog from '../components/ModalDialog';
+import withLogoutAuth from '../auth/withLogoutAuth';
 
 const ResetPassword = () => {
   const router = useRouter();
@@ -118,4 +119,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default withLogoutAuth(ResetPassword);

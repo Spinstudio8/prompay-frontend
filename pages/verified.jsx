@@ -5,6 +5,7 @@ import { ImCheckmark } from 'react-icons/im';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeVerificationEmail } from '../store/slice/userSlice';
+import withLogoutAuth from '../auth/withLogoutAuth';
 
 const Verified = () => {
   const verificationEmail = useSelector(
@@ -61,4 +62,4 @@ const Verified = () => {
   );
 };
 
-export default Verified;
+export default withLogoutAuth(Verified);

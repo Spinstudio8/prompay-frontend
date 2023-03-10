@@ -8,6 +8,7 @@ import Loader from '../../components/Loader';
 import { toDateString, toHtmlDate } from '../../utils/dateHelper';
 import { adminUpdateUser } from '../../services/userService';
 import { setAdminViewAdminProfile } from '../../store/slice/userSlice';
+import withAdminAuth from '../../auth/WithAdminAuth';
 
 const Profile = () => {
   const router = useRouter();
@@ -41,12 +42,7 @@ const Profile = () => {
   };
 
   const refresh = async () => {
-    // try {
-    //   const { data } = await getUserProfile(tokenPayload.id, token);
-    //   setUserProfile({ ...userProfile, ...data });
-    // } catch (error) {
-    //   // console.error(error);
-    // }
+    // setUserProfile({ ...adminViewAdminProfile });
   };
 
   const updateProfile = async () => {
@@ -300,4 +296,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAdminAuth(Profile);

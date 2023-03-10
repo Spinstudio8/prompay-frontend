@@ -8,6 +8,7 @@ import DashboardLayout from '../../components/DashboardLayout';
 import { getSubjects } from '../../services/subjectService';
 import { addQuestion } from '../../services/questionService';
 import ButtonLoader from '../../components/ButtonLoader';
+import withAdminAuth from '../../auth/WithAdminAuth';
 
 const AddQuestion = () => {
   const { token } = useSelector((state) => state.user);
@@ -265,4 +266,4 @@ const AddQuestion = () => {
   );
 };
 
-export default AddQuestion;
+export default withAdminAuth(AddQuestion);

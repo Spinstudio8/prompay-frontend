@@ -6,6 +6,7 @@ import { getUserProfile, updateUserProfile } from '../services/userService';
 import Loader from '../components/Loader';
 import { toDateString, toHtmlDate } from '../utils/dateHelper';
 import { setUpdateUser, setLogin } from '../store/slice/userSlice';
+import withLoginAuth from '../auth/withLoginAuth';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -285,4 +286,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withLoginAuth(Profile);

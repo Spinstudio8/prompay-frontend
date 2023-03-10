@@ -9,6 +9,7 @@ import {
 } from '../../services/withdrawalService';
 import ButtonLoader from './../../components/ButtonLoader';
 import ModalDialog from '../../components/ModalDialog';
+import withAdminAuth from '../../auth/WithAdminAuth';
 
 const pendingStyle =
   'uppercase py-2 px-2 mb-4 bg-primaryBlue text-white font-semibold text-center';
@@ -280,4 +281,4 @@ const WithdrawalRequest = ({ id }) => {
   );
 };
 
-export default WithdrawalRequest;
+export default withAdminAuth(WithdrawalRequest);

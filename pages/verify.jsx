@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { AiOutlineMail } from 'react-icons/ai';
 import { resendVerificationCode, verifyCode } from '../services/userService';
+import withLogoutAuth from '../auth/withLogoutAuth';
 
 const Verify = () => {
   const verificationEmail = useSelector(
@@ -174,4 +175,4 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default withLogoutAuth(Verify);

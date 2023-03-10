@@ -4,6 +4,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { getUserDashboard } from '../services/userService';
+import withLoginAuth from '../auth/withLoginAuth';
 
 const DashboardCard = ({ icon, figure, title, middle, bg, textColor }) => (
   <div
@@ -213,4 +214,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default withLoginAuth(dashboard);

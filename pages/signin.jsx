@@ -15,6 +15,7 @@ import {
   removeVerificationEmail,
   setUser,
 } from '../store/slice/userSlice';
+import withLogoutAuth from '../auth/withLogoutAuth';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -178,4 +179,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default withLogoutAuth(Signin);

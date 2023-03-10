@@ -8,6 +8,7 @@ import { transactionColumns } from '../components/TableData';
 import differenceBy from 'lodash/differenceBy';
 import { getUserWallet } from '../services/userService';
 import WithdrawModal from '../components/WithdrawModal';
+import withLoginAuth from '../auth/withLoginAuth';
 
 const SearchComponent = ({ onFilter, filterText }) => (
   <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white flex w-4/5 md:w-[325px] h-[42px] py-[12-x] px-[16px] items-center border border-[#D1D5DB] bg-[#F9FAFB] rounded-lg mb-[16px]'>
@@ -191,4 +192,4 @@ const Wallet = () => {
   );
 };
 
-export default Wallet;
+export default withLoginAuth(Wallet);

@@ -3,6 +3,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { getOverview } from '../services/adminService';
+import withAdminAuth from '../auth/WithAdminAuth';
 
 const DashboardCard = ({ icon, figure, title, middle, bg, textColor }) => (
   <div
@@ -30,7 +31,7 @@ const DashboardCard = ({ icon, figure, title, middle, bg, textColor }) => (
   </div>
 );
 
-const overview = () => {
+const Overview = () => {
   const { tokenPayload, token } = useSelector((state) => state.user);
   const [adminOverview, setAdminOverview] = useState({
     totalPaidOut: 0,
@@ -157,4 +158,4 @@ const overview = () => {
   );
 };
 
-export default overview;
+export default withAdminAuth(Overview);

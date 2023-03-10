@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { startAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
 import StartAssessment from '../components/StartAssessment';
+import withLoginAuth from '../auth/withLoginAuth';
 
 const assessment = () => {
   const { token } = useSelector((state) => state.user);
@@ -72,4 +73,4 @@ const assessment = () => {
   );
 };
 
-export default assessment;
+export default withLoginAuth(assessment);

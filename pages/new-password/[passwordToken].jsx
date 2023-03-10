@@ -11,6 +11,7 @@ import {
 } from '../../services/userService';
 import ModalDialog from '../../components/ModalDialog';
 import Loader from '../../components/Loader';
+import withLogoutAuth from '../../auth/withLogoutAuth';
 
 const NewPassword = () => {
   const router = useRouter();
@@ -209,4 +210,4 @@ const NewPassword = () => {
   );
 };
 
-export default NewPassword;
+export default withLogoutAuth(NewPassword);

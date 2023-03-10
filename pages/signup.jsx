@@ -9,6 +9,7 @@ import Meta from '../components/Meta';
 import ButtonLoader from '../components/ButtonLoader';
 import { signup } from '../services/userService';
 import { setVerificationEmail } from '../store/slice/userSlice';
+import withLogoutAuth from '../auth/withLogoutAuth';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -306,4 +307,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withLogoutAuth(Signup);
