@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import DashboardLayout from '../components/DashboardLayout';
-import { getUserProfile, updateUserProfile } from '../services/userService';
-import Loader from '../components/Loader';
-import { toDateString, toHtmlDate } from '../utils/dateHelper';
-import { setUpdateUser, setLogin } from '../store/slice/userSlice';
 import withLoginAuth from '../auth/withLoginAuth';
 import ChangePassword from '../components/settings/ChangePassword';
 
