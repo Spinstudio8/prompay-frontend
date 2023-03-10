@@ -3,7 +3,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { getOverview } from '../services/adminService';
-import withAdminAuth from '../auth/WithAdminAuth';
+import withAdminAuth from '../auth/withAdminAuth';
 
 const DashboardCard = ({ icon, figure, title, middle, bg, textColor }) => (
   <div
