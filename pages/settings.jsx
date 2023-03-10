@@ -31,7 +31,7 @@ const Settings = () => {
                     General profile settings
                   </h2>
                 </div>
-                <ChangePassword />
+                <ChangePassword token={token} />
               </div>
             </div>
           </div>

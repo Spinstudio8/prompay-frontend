@@ -1,22 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { GrKey } from 'react-icons/gr';
+import { userResetPassword } from '../../services/settingsService';
 
 const bgColor = 'bg-gray-100';
 
-function ChangePassword() {
+function ChangePassword({ token }) {
+  const [state, setState] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
   const [errorMessage, setErrorMessage] = useState('');
   const [isEdit, setEditMode] = useState(false);
+  const [loadingSave, setLoadingSave] = useState(false);
 
   const handleEdit = () => {
     setEditMode(!isEdit);
-    console.log('edit');
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoadingSave(true);
+    setErrorMessage('');
+
+    const password = {
+      currentPassword: state.currentPassword,
+      newPassword: state.newPassword,
+    };
+
+    try {
+      const { data } = await userResetPassword(password, token);
+      setMessage(data.message);
+      setLoadingSave(false);
+      setEditMode(false);
+      setState({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
+    } catch (err) {
+      if (err.response && err.response?.data) {
+        setErrorMessage(err.response.data.message);
+      }
+      setLoadingSave(false);
+    }
   };
 
   return (
@@ -68,7 +100,7 @@ function ChangePassword() {
                 id='currentPassword'
                 type='password'
                 name='currentPassword'
-                value={''}
+                value={state.currentPassword}
                 className='bg-light-gray border-black border rounded pl-2'
                 onChange={(e) => handleChange(e)}
               />
@@ -84,7 +116,7 @@ function ChangePassword() {
                 id='newPassword'
                 type='password'
                 name='newPassword'
-                value={''}
+                value={state.newPassword}
                 className='bg-light-gray border-black border rounded pl-2'
                 onChange={(e) => handleChange(e)}
               />
@@ -100,7 +132,7 @@ function ChangePassword() {
                 id='confirmPassword'
                 type='password'
                 name='confirmPassword'
-                value={''}
+                value={state.confirmPassword}
                 className='bg-light-gray border-black border rounded pl-2'
                 onChange={(e) => handleChange(e)}
               />
