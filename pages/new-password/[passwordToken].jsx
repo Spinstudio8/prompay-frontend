@@ -169,7 +169,7 @@ const NewPassword = () => {
         <div className='flex gap-6 my-6'>
           <button
             onClick={() => verifyToken()}
-            className='bg-primaryGreen hover:bg-green-300 text-white px-5 py-2 flex items-center justify-center rounded'
+            className='bg-primaryGreen hover:bg-green-300 text-white px-2 py-1 flex items-center justify-center rounded'
           >
             Ok
           </button>
@@ -184,7 +184,7 @@ const NewPassword = () => {
           <Link
             onClick={() => setShowModal(false)}
             href={'/signin'}
-            className='bg-primaryGreen hover:bg-green-300 text-white px-5 py-2 flex items-center justify-center rounded'
+            className='bg-primaryGreen hover:bg-green-300 text-white px-2 py-1 flex items-center justify-center rounded'
           >
             Ok
           </Link>
@@ -199,7 +199,7 @@ const NewPassword = () => {
           <Link
             onClick={() => setShowExpireModal(false)}
             href={'/reset-password'}
-            className='bg-primaryGreen hover:bg-green-300 text-white px-5 py-2 flex items-center justify-center rounded'
+            className='bg-primaryGreen hover:bg-green-300 text-white px-2 py-1 flex items-center justify-center rounded'
           >
             Ok
           </Link>

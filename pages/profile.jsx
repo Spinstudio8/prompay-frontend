@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { toDateString, toHtmlDate } from '../utils/dateHelper';
 import { setUpdateUser, setLogin } from '../store/slice/userSlice';
 import withLoginAuth from '../auth/withLoginAuth';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ const Profile = () => {
       ); // update user token
       setFullName(`${data.firstName} ${data.lastName}`);
       setUserProfileLoading(false);
+      toast('Updated successfuly', { className: 'toast-style' });
     } catch (error) {
       if (error.response && error.response?.data) {
         setErrorMessage(error.response.data.message);
@@ -170,7 +172,7 @@ const Profile = () => {
                               type='text'
                               name='firstName'
                               value={userProfile.firstName}
-                              className='bg-light-gray border-black border rounded pl-2 py-1 w-full sm:w-[normal]'
+                              className='bg-light-gray border-black border rounded pl-2 w-full sm:w-[normal]'
                               onChange={(e) => handleChange(e)}
                             />
                           </div>
@@ -182,7 +184,7 @@ const Profile = () => {
                               type='text'
                               name='lastName'
                               value={userProfile.lastName}
-                              className='bg-light-gray border-black border rounded pl-2 py-1 w-full sm:w-[normal]'
+                              className='bg-light-gray border-black border rounded pl-2 w-full sm:w-[normal]'
                               onChange={(e) => handleChange(e)}
                             />
                           </div>
@@ -196,7 +198,7 @@ const Profile = () => {
                               type='tel'
                               name='phone'
                               value={userProfile.phone}
-                              className='bg-light-gray border-black border rounded pl-2 py-1 w-full sm:w-[normal]'
+                              className='bg-light-gray border-black border rounded pl-2 w-full sm:w-[normal]'
                               onChange={(e) => handleChange(e)}
                               disabled={true}
                             />
@@ -209,7 +211,7 @@ const Profile = () => {
                               type='text'
                               name='gender'
                               value={userProfile.gender}
-                              className='bg-light-gray border-black border rounded pl-2 py-1 w-full sm:w-[normal]'
+                              className='bg-light-gray border-black border rounded pl-2 w-full sm:w-[normal]'
                               onChange={(e) => handleChange(e)}
                               disabled={true}
                             />
@@ -224,7 +226,7 @@ const Profile = () => {
                             name='birthDay'
                             id='birthDay'
                             value={toHtmlDate(userProfile.birthDay)}
-                            className='bg-light-gray border-black border rounded pl-2 py-1 w-full'
+                            className='bg-light-gray border-black border rounded pl-2 w-full'
                             onChange={(e) => handleChange(e)}
                             disabled={true}
                           />
@@ -238,7 +240,7 @@ const Profile = () => {
                             name='email'
                             id='email'
                             value={userProfile.email}
-                            className='bg-light-gray border-black border rounded pl-2 py-1 w-full'
+                            className='bg-light-gray border-black border rounded pl-2 w-full'
                             onChange={(e) => handleChange(e)}
                             disabled={true}
                           />
@@ -252,7 +254,7 @@ const Profile = () => {
                             name='location'
                             id='location'
                             value={userProfile.location}
-                            className='bg-light-gray border-black border rounded pl-2 py-1 w-full'
+                            className='bg-light-gray border-black border rounded pl-2 w-full'
                             onChange={(e) => handleChange(e)}
                           />
                         </div>
@@ -265,7 +267,7 @@ const Profile = () => {
                             name='role'
                             id='role'
                             value={userProfile.role}
-                            className='bg-light-gray border-black border rounded pl-2 py-1 w-full'
+                            className='bg-light-gray border-black border rounded pl-2 w-full'
                             onChange={(e) => handleChange(e)}
                             disabled={true}
                           />

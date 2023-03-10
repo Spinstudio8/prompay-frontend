@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { GrKey } from 'react-icons/gr';
 import { userResetPassword } from '../../services/settingsService';
 import { toast } from 'react-toastify';

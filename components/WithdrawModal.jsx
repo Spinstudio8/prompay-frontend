@@ -66,12 +66,11 @@ const WithdrawModal = ({ showModal, setModalState }) => {
                     name='type'
                     id='type'
                     value={state.type}
-                    className='w-full py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                    className='w-full py-1 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                     onChange={handleChange}
                   >
                     <option value=''>Select withdrawal type</option>
                     <option value='bank'>Bank</option>
-                    <option value='cryptocurrency'>Cryptocurrency</option>
                   </select>
                 </div>
                 <div className='w-full mb-2'>
@@ -84,7 +83,7 @@ const WithdrawModal = ({ showModal, setModalState }) => {
                     name='bankName'
                     value={state.bankName}
                     onChange={handleChange}
-                    className='w-full py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                    className='w-full pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                   />
                 </div>
                 <div className='w-full mb-2'>
@@ -100,7 +99,7 @@ const WithdrawModal = ({ showModal, setModalState }) => {
                     name='accountNumber'
                     value={state.accountNumber}
                     onChange={handleChange}
-                    className='w-full py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded no-arrows'
+                    className='w-full pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded no-arrows'
                   />
                 </div>
                 <div className='w-full mb-2'>
@@ -113,7 +112,7 @@ const WithdrawModal = ({ showModal, setModalState }) => {
                     name='accountName'
                     value={state.accountName}
                     onChange={handleChange}
-                    className='w-full py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                    className='w-full pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
                   />
                 </div>
                 <div className='w-full mb-2'>
@@ -126,7 +125,7 @@ const WithdrawModal = ({ showModal, setModalState }) => {
                     name='amount'
                     value={state.amount}
                     onChange={handleChange}
-                    className='w-full py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded no-arrows'
+                    className='w-full pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded no-arrows'
                   />
                 </div>
                 <div className='flex gap-8 w-full justify-center mt-6'>
