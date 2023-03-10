@@ -9,7 +9,7 @@ import {
 } from '../../services/withdrawalService';
 import ButtonLoader from './../../components/ButtonLoader';
 import ModalDialog from '../../components/ModalDialog';
-import withAdminAuth from '../../auth/WithAdminAuth';
+import withAdminAuth from '../../auth/withAdminAuth';
 
 const pendingStyle =
   'uppercase py-2 px-2 mb-4 bg-primaryBlue text-white font-semibold text-center';

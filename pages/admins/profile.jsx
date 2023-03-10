@@ -8,7 +8,7 @@ import Loader from '../../components/Loader';
 import { toDateString, toHtmlDate } from '../../utils/dateHelper';
 import { adminUpdateUser } from '../../services/userService';
 import { setAdminViewAdminProfile } from '../../store/slice/userSlice';
-import withAdminAuth from '../../auth/WithAdminAuth';
+import withAdminAuth from '../../auth/withAdminAuth';
 
 const Profile = () => {
   const router = useRouter();
