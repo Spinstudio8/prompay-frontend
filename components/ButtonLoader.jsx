@@ -8,7 +8,7 @@ export default function ButtonLoader() {
         strokeColor='green'
         strokeWidth='5'
         animationDuration='0.75'
-        width='35'
+        width='30'
         visible={true}
       />
     </>
