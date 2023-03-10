@@ -111,7 +111,7 @@ export const adminLinks = [
       {
         name: 'platform settings',
         icon: <MdOutlineSettings />,
-        path: 'dashboard',
+        path: 'platform-settings',
       },
     ],
   },

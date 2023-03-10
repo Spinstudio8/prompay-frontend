@@ -64,19 +64,19 @@ function ChangePassword({ token }) {
       <div
         className={`${
           isEdit ? bgColor : null
-        }  border border-gray-400 w-full rounded-sm px-[10px] shadow-sm py-[10px]`}
+        }  text-black border border-gray-400 w-full rounded-sm px-[10px] shadow-sm py-[10px]`}
       >
         <div
           onClick={() => handleEdit()}
           className='w-full flex justify-between items-center cursor-pointer'
         >
-          <div className='flex gap-4 items-center'>
+          <div className='flex gap-4 items-center dark:text-white'>
             <div className='xs:text-[20px] xs:ml-[10px]'>
               <GrKey />
             </div>
             <div>
               <h3>Change Password</h3>
-              <p className='text-[rgba(0,0,0,0.6)] hidden xs:block'>
+              <p className='text-[rgba(0,0,0,0.6)] hidden xs:block dark:text-[rgba(255,255,255,0.8)]'>
                 It's a good idea to use a strong password that you're not using
                 elsewhere
               </p>
