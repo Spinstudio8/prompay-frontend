@@ -144,7 +144,7 @@ a {
   z-index: 1000000 !important;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 6px;
 }
 
@@ -155,7 +155,7 @@ a {
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
-}
+} */
 
 /* Hide the arrows */
 .no-arrows::-webkit-inner-spin-button,
