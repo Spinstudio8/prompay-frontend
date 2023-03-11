@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { TbCurrencyNaira } from 'react-icons/tb';
-import { userResetPassword } from '../../services/settingsService';
+import {
+  savePlatformSettings,
+  userResetPassword,
+} from '../../services/settingsService';
 import { toast } from 'react-toastify';
 import ButtonLoader from './../ButtonLoader';
 
 const bgColor = 'bg-gray-100';
 
-function ChangeWithdrawal({ token }) {
+function ChangeWithdrawal({ token, settings, getSettings }) {
   const [state, setState] = useState({
     minWithdrawal: '',
     maxWithdrawal: '',
@@ -34,7 +37,11 @@ function ChangeWithdrawal({ token }) {
     };
 
     try {
-      const { data } = await userResetPassword(withdrawalLimits, token);
+      const { data } = await savePlatformSettings(
+        settings._id,
+        withdrawalLimits,
+        token
+      );
       toast(`${data.message}`, { className: 'toast-style' });
       setLoadingSave(false);
       setEditMode(false);
@@ -42,8 +49,8 @@ function ChangeWithdrawal({ token }) {
         minWithdrawal: '',
         maxWithdrawal: '',
       });
+      getSettings();
     } catch (err) {
-      console.log(err);
       if (err.response && err.response?.data) {
         setErrorMessage(err.response.data.message);
       }
@@ -147,10 +154,16 @@ function ChangeWithdrawal({ token }) {
               <div>
                 <h4>Current limits:</h4>
                 <p>
-                  Minimum - <span className='font-semibold'>₦ 2000</span>
+                  Minimum -{' '}
+                  <span className='font-semibold'>
+                    ₦ {settings.data.minWithdrawal}
+                  </span>
                 </p>
                 <p>
-                  Maximum - <span className='font-semibold'>₦ 100000</span>
+                  Maximum -{' '}
+                  <span className='font-semibold'>
+                    ₦ {settings.data.maxWithdrawal}
+                  </span>
                 </p>
               </div>
             </div>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BsFillQuestionSquareFill } from 'react-icons/bs';
-import { userResetPassword } from '../../services/settingsService';
+import { savePlatformSettings } from '../../services/settingsService';
 import { toast } from 'react-toastify';
 import ButtonLoader from './../ButtonLoader';
 
 const bgColor = 'bg-gray-100';
 
-function ChangeAssessmentQuestions({ token }) {
+function ChangeAssessmentQuestions({ token, settings, getSettings }) {
   const [state, setState] = useState({
     totalQuestions: '',
     pricePerQuestion: '',
@@ -28,13 +28,17 @@ function ChangeAssessmentQuestions({ token }) {
     setLoadingSave(true);
     setErrorMessage('');
 
-    const question = {
+    const questionData = {
       totalQuestions: state.totalQuestions,
       pricePerQuestion: state.pricePerQuestion,
     };
 
     try {
-      const { data } = await userResetPassword(question, token);
+      const { data } = await savePlatformSettings(
+        settings._id,
+        questionData,
+        token
+      );
       toast(`${data.message}`, { className: 'toast-style' });
       setLoadingSave(false);
       setEditMode(false);
@@ -42,8 +46,8 @@ function ChangeAssessmentQuestions({ token }) {
         totalQuestions: '',
         pricePerQuestion: '',
       });
+      getSettings();
     } catch (err) {
-      console.log(err);
       if (err.response && err.response?.data) {
         setErrorMessage(err.response.data.message);
       }
@@ -147,11 +151,16 @@ function ChangeAssessmentQuestions({ token }) {
               <div>
                 <h4>Current values:</h4>
                 <p>
-                  Questions - <span className='font-semibold'>50</span>
+                  Questions -{' '}
+                  <span className='font-semibold'>
+                    {settings.data.totalQuestions}
+                  </span>
                 </p>
                 <p>
                   Price per question -{' '}
-                  <span className='font-semibold'>₦ 10</span>
+                  <span className='font-semibold'>
+                    ₦ {settings.data.pricePerQuestion}
+                  </span>
                 </p>
               </div>
             </div>

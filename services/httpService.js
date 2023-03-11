@@ -13,7 +13,7 @@ axios.interceptors.response.use(null, (error) => {
 
   // if it's an unexpected error
   if (!expectedError) {
-    toast('An unexpected error occurred.', { className: 'toast-style' });
+    toast('Something failed.', { className: 'toast-style' });
   }
 
   return Promise.reject(error); // the error is sent to the catch block

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { submitAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
 import ModalDialog from './ModalDialog';
+import SubmittingAssessmentLoader from './SubmittingAssessmentLoader';
 
 const StartAssessment = ({ assessment }) => {
   const router = useRouter();
@@ -112,6 +113,7 @@ const StartAssessment = ({ assessment }) => {
 
   return (
     <>
+      {loadingSubmit && <SubmittingAssessmentLoader />}
       <div className='mt-[25px] md:mt-[40px]'>
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
           {currentQuestion?.subject.title}:
@@ -230,16 +232,12 @@ const StartAssessment = ({ assessment }) => {
                 </button>
               </div>
               <div className='flex justify-center md:justify-end pb-[20px]'>
-                {loadingSubmit ? (
-                  <ButtonLoader />
-                ) : (
-                  <button
-                    onClick={handleSubmit}
-                    className='w-[150px] bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
-                  >
-                    Submit
-                  </button>
-                )}
+                <button
+                  onClick={handleSubmit}
+                  className='w-[150px] bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
+                >
+                  Submit
+                </button>
               </div>
             </div>
           ))}
@@ -255,7 +253,7 @@ const StartAssessment = ({ assessment }) => {
           </p>
           <button
             onClick={() => handleSubmitted()}
-            className='my-6 bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+            className='my-6 bg-primaryGreen hover:bg-black text-white px-2 py-1 flex items-center justify-center rounded'
           >
             Ok
           </button>
