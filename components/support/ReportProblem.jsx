@@ -117,7 +117,7 @@ function ReportProblem({ token }) {
                   <option value='Other'>Other</option>
                 </select>
               </div>
-              <div className='mb-[20px] w-full'>
+              <div className='w-full'>
                 <label htmlFor='details' className='font-semibold block mb-2'>
                   Details
                 </label>
@@ -130,7 +130,14 @@ function ReportProblem({ token }) {
                   onChange={(e) => handleChange(e)}
                 ></textarea>
               </div>
-              <div className='w-full rounded-lg bg-gray-300 px-4 py-2 text-[14px]'>
+              <div className='text-center'>
+                {errorMessage && (
+                  <p className='text-red-600 text-[14px] md:w-[70%]'>
+                    {errorMessage}
+                  </p>
+                )}
+              </div>
+              <div className='w-full rounded-lg bg-gray-300 px-4 py-2 text-[14px] mt-4'>
                 <p>
                   Let us know if you have ideas that can help make our products
                   better.
@@ -141,13 +148,8 @@ function ReportProblem({ token }) {
                 </p>
               </div>
               <div className='text-center'>
-                {errorMessage && (
-                  <p className='text-red-600 text-[14px] md:w-[70%]'>
-                    {errorMessage}
-                  </p>
-                )}
                 {loadingSend ? (
-                  <span className='inline-block'>
+                  <span className='inline-block mt-4'>
                     <ButtonLoader />
                   </span>
                 ) : (
