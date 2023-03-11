@@ -8,13 +8,12 @@ const bgColor = 'bg-gray-100';
 
 function ReportProblem({ token }) {
   const [state, setState] = useState({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: '',
+    area: '',
+    details: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
   const [isOpen, setOpenMode] = useState(false);
-  const [loadingSave, setLoadingSave] = useState(false);
+  const [loadingSend, setLoadingSend] = useState(false);
 
   const handleOpen = () => {
     setOpenMode(!isOpen);
@@ -26,36 +25,32 @@ function ReportProblem({ token }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoadingSave(true);
+    setLoadingSend(true);
     setErrorMessage('');
 
-    if (state.newPassword !== state.confirmPassword) {
-      setErrorMessage('Passwords do not match');
-      setLoadingSave(false);
-      return;
-    }
-
-    const password = {
-      currentPassword: state.currentPassword,
-      newPassword: state.newPassword,
+    const reportData = {
+      area: state.area,
+      details: state.details,
     };
 
+    console.log(reportData);
+
+    return;
+
     try {
-      const { data } = await userResetPassword(password, token);
+      const { data } = await userResetPassword(reportData, token);
       toast(`${data.message}`, { className: 'toast-style' });
-      setLoadingSave(false);
+      setLoadingSend(false);
       setOpenMode(false);
       setState({
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: '',
+        area: '',
+        details: '',
       });
     } catch (err) {
-      console.log(err);
       if (err.response && err.response?.data) {
         setErrorMessage(err.response.data.message);
       }
-      setLoadingSave(false);
+      setLoadingSend(false);
     }
   };
 
@@ -96,54 +91,54 @@ function ReportProblem({ token }) {
         {isOpen && (
           <div className='w-full flex flex-col items-center'>
             <div className='border-t border-gray-300 w-[90%] mx-auto my-[20px]'></div>
-            <form onSubmit={handleSubmit}>
-              <div className='mb-[30px]'>
-                <label
-                  htmlFor='currentPassword'
-                  className='font-semibold mr-4 xs:w-[92px] block xs:inline-block xs:text-right'
-                >
-                  Current
+            <form
+              onSubmit={handleSubmit}
+              className='xxs:w-[90%] xs:w-[60%] md:w-[450px]'
+            >
+              <div className='mb-[20px] w-full'>
+                <label htmlFor='area' className='font-semibold block mb-2'>
+                  How can we help?
                 </label>
-                <input
-                  id='currentPassword'
-                  type='password'
-                  name='currentPassword'
-                  value={state.currentPassword}
-                  className='bg-light-gray border-black border rounded pl-2'
+                <select
+                  id='area'
+                  name='area'
+                  value={state.area}
+                  className='bg-light-gray border-black border rounded pl-2 py-2 w-full'
                   onChange={(e) => handleChange(e)}
-                />
+                >
+                  <option>Choose an area</option>
+                  <option value='Ads'>Ads</option>
+                  <option value='Assessment'>Assessment</option>
+                  <option value='Questions'>Questions</option>
+                  <option value='Profile'>Profile</option>
+                  <option value='Settings'>Settings</option>
+                  <option value='Rewards'>Rewards</option>
+                  <option value='Withdrawal'>Withdrawal</option>
+                  <option value='Wallet balance'>Wallet balance</option>
+                  <option value='Navigation'>Navigation</option>
+                  <option value='Login'>Log in</option>
+                  <option value='User interface'>User interface</option>
+                  <option value='Other'>Other</option>
+                </select>
               </div>
-              <div className='mb-[15px]'>
-                <label
-                  htmlFor='newPassword'
-                  className='font-semibold mr-4 xs:w-[92px] block xs:inline-block xs:text-right'
-                >
-                  New
+              <div className='mb-[20px] w-full'>
+                <label htmlFor='details' className='font-semibold block mb-2'>
+                  Details
                 </label>
-                <input
-                  id='newPassword'
-                  type='password'
-                  name='newPassword'
-                  value={state.newPassword}
-                  className='bg-light-gray border-black border rounded pl-2'
+                <textarea
+                  id='details'
+                  name='details'
+                  value={state.details}
+                  placeholder='Please include as much info as possible...'
+                  className='bg-light-gray border-black border rounded py-1 pl-2 w-full h-[130px] resize-none focus:border-none'
                   onChange={(e) => handleChange(e)}
-                />
+                ></textarea>
               </div>
-              <div className='mb-[15px]'>
-                <label
-                  htmlFor='confirmPassword'
-                  className='font-semibold mr-4 xs:w-[92px] block xs:inline-block xs:text-right'
-                >
-                  Re-type new
-                </label>
-                <input
-                  id='confirmPassword'
-                  type='password'
-                  name='confirmPassword'
-                  value={state.confirmPassword}
-                  className='bg-light-gray border-black border rounded pl-2'
-                  onChange={(e) => handleChange(e)}
-                />
+              <div className='w-full rounded-lg bg-light-gray'>
+                <p>
+                  Let us know if you have ideas that can help make our products
+                  better.
+                </p>
               </div>
               <div className='text-center'>
                 {errorMessage && (
@@ -151,7 +146,7 @@ function ReportProblem({ token }) {
                     {errorMessage}
                   </p>
                 )}
-                {loadingSave ? (
+                {loadingSend ? (
                   <span className='inline-block'>
                     <ButtonLoader />
                   </span>

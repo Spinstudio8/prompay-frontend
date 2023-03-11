@@ -14,7 +14,7 @@ const Support = () => {
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div
-              className='w-full bg-white min-h-[80vh] rounded-lg px-[15px] py-[15px] mb-[70px] dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'
+              className='w-full bg-white min-h-[80vh] rounded-lg px-[15px] pt-[15px] pb-[25px] mb-[70px] dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'
               style={{
                 boxShadow:
                   '0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.1)',
