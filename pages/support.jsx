@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DashboardLayout from '../components/DashboardLayout';
 import withLoginAuth from '../auth/withLoginAuth';
-import ChangePassword from '../components/settings/ChangePassword';
+import ReportProblem from '../components/support/ReportProblem';
 
-const Settings = () => {
+const Support = () => {
   const dispatch = useDispatch();
   const { token, tokenPayload } = useSelector((state) => state.user);
 
@@ -23,10 +23,10 @@ const Settings = () => {
               <div className='xs:w-[95%] lg:w-[85%] mx-auto'>
                 <div className='flex justify-start mb-[20px] md:mb-[49px] mt-[10px]'>
                   <h2 className='font-[500] text-[24px] leading-7 text-black dark:text-white'>
-                    General profile settings
+                    Help & Support
                   </h2>
                 </div>
-                <ChangePassword token={token} />
+                <ReportProblem token={token} />
               </div>
             </div>
           </div>
@@ -36,4 +36,4 @@ const Settings = () => {
   );
 };
 
-export default withLoginAuth(Settings);
+export default withLoginAuth(Support);

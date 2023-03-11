@@ -52,7 +52,7 @@ const PlatformSettings = () => {
               ) : (
                 <div className='xs:w-[95%] lg:w-[85%] mx-auto'>
                   <div className='flex justify-start mb-[20px] md:mb-[49px] mt-[10px]'>
-                    <h2 className='font-[500] text-[24px] leading-7'>
+                    <h2 className='font-[500] text-[24px] leading-7 text-black dark:text-white'>
                       Prompay settings
                     </h2>
                   </div>

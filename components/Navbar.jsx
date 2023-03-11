@@ -189,13 +189,13 @@ const Navbar = () => {
           // onClick={() => setNotificationdropDown(!notificationdropDown)}
           // onMouseLeave={() => setNotificationdropDown(false)}
         >
-          <NavButton
+          {/* <NavButton
             title='Notifications'
             dotColor='#03c9D7'
-            customFunc={() => setNotificationdropDown(notificationdropDown)}
+            customFunc={() => setNotificationdropDown(!notificationdropDown)}
             color='blue'
             icon={<RiNotification3Line />}
-          />
+          /> */}
           <ul
             className={`${
               notificationdropDown

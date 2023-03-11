@@ -52,7 +52,7 @@ export const userLinks = [
       {
         name: 'support',
         icon: <BiSupport />,
-        path: 'dashboard',
+        path: 'support',
       },
     ],
   },
@@ -103,11 +103,11 @@ export const adminLinks = [
         icon: <MdOutlinePayments />,
         path: 'payment-history',
       },
-      {
-        name: 'support',
-        icon: <BiSupport />,
-        path: 'dashboard',
-      },
+      // {
+      //   name: 'support',
+      //   icon: <BiSupport />,
+      //   path: 'dashboard',
+      // },
       {
         name: 'platform settings',
         icon: <MdOutlineSettings />,
