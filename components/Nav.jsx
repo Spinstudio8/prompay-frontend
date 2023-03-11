@@ -81,10 +81,21 @@ const Nav = ({ path }) => {
             <li className='md:ml-[40px] my-3 md:my-0'>
               <Link
                 className={`${
+                  path === '/process' &&
+                  'text-[#006F36] border-2 py-1 font-[700] border-[#006F36] px-1 rounded'
+                } text-[16px] font-[700]  duration-500 `}
+                href='/our-process'
+              >
+                Our Process
+              </Link>
+            </li>
+            <li className='md:ml-[40px] my-3 md:my-0'>
+              <Link
+                className={`${
                   path === '/faq' &&
                   'text-[#006F36] border-2 py-1 font-[700] border-[#006F36] px-1 rounded'
                 } text-[16px] font-[700]  duration-500 `}
-                href='/'
+                href='/faq'
               >
                 FAQ
               </Link>

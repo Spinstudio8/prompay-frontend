@@ -108,7 +108,7 @@ export default function Home() {
             <ul>
               <li className=' font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>Easy start with
-                assessments.
+                assessments
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>Learn, unlearn,
@@ -116,7 +116,7 @@ export default function Home() {
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>Input your account
-                details and get paid on a weekly or monthly basis
+                details and get paid on a weekly basis
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>24/7 support from our
@@ -129,10 +129,10 @@ export default function Home() {
       <Animation style='fade-left' placement='center-center'>
         <section className='bg-white py-[112px] px-[15px] text-black'>
           <h1 className='font-[700] text-[30px] md:text-[80px] leading-[30px] md:leading-[80px] mb-[24px] text-center '>
-            Earn With #PROMpay
+            Earn With promPay
           </h1>
           <p className='text-center font-[400] text-[20px] md:text-[28px] mb-[20px] md:mb-[80px]'>
-            What our PROMpay users say
+            What promPay users say
           </p>
           <Slider />
         </section>
