@@ -81,8 +81,8 @@ export default function Home() {
             </h3>
             <ul>
               <li className=' font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Visit prompay.com and
-                sign up
+                <span className='mr-[13px]'>&#9679;</span>Visit theprompay.com
+                and sign up
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>Fill in your details
