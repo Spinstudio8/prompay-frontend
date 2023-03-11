@@ -89,14 +89,6 @@ export default function Home() {
                 and complete your profile
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>After you have signed
-                up and completed your profile, take assessments to start earning
-              </li>
-              <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Complete each
-                assessment and earn money
-              </li>
-              <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>Better results equal
                 more money
               </li>
@@ -119,11 +111,15 @@ export default function Home() {
                 <span className='mr-[13px]'>&#9679;</span>Input your account
                 details and get paid on a weekly basis
               </li>
-              <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>24/7 support from our
-                prompay community
-              </li>
             </ul>
+            <div className='mt-8'>
+              <Link
+                href='/our-process'
+                className='inline-block text-white hover:bg-black border py-[16px] px-24px w-[154px] h-[56px] rounded-lg text-[16px] font-[900] leading-5 text-center'
+              >
+                Learn more
+              </Link>
+            </div>
           </div>
         </section>
       </Animation>
