@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Nav from '../components/Nav';
-import Info from '../components/Info';
-import Slider from '../components/Slider';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import Meta from '../components/Meta';
 import Animation from '../components/Animation';
 import { useRouter, withRouter } from 'next/router';
 import MobileComingSoon from './../components/MobileComingSoon';
+import { FaHandPointRight } from 'react-icons/fa';
 
 export default function OurProcess() {
   const token = useSelector((state) => state.user.token);
@@ -39,14 +38,75 @@ export default function OurProcess() {
         </div>
       </div>
       <Animation style='fade-left' placement='center-center'>
-        <section className='bg-white py-[112px] px-[15px] text-black'>
+        <section className='bg-white py-[50px] md:py-[112px] px-[15px] text-black'>
           <h1 className='font-[700] text-[30px] md:text-[80px] leading-[30px] md:leading-[80px] mb-[24px] text-center '>
             How to Get Started
           </h1>
-          <p className='text-center font-[400] text-[20px] md:text-[28px] mb-[20px] md:mb-[80px]'>
-            What promPay users say
-          </p>
-          <Slider />
+          <div className='mt-[30px] md:mt-[60px] flex flex-col md:flex-row justify-center gap-14'>
+            <div>
+              <h3 className='text-primaryGreen font-[700] text-[25px] md:text-[30px] leading-7 mb-[15px] md:mb-[32px]'>
+                Here’s our process
+              </h3>
+              <ul>
+                <li className='mb-6 flex gap-4 items-start font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen'>
+                    <FaHandPointRight />
+                  </span>
+                  <span>Visit theprompay.com and sign up</span>
+                </li>
+                <li className='mb-6 flex gap-4 items-start font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen'>
+                    <FaHandPointRight />
+                  </span>
+                  <span>Fill in your details and complete your profile</span>
+                </li>
+                <li className='mb-6 flex gap-4 items-start font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen'>
+                    <FaHandPointRight />
+                  </span>
+                  <span>
+                    After you have signed up and completed your profile, take
+                    assessments to start earning
+                  </span>
+                </li>
+                <li className='mb-6 flex gap-4 items-start font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen'>
+                    <FaHandPointRight />
+                  </span>
+                  <span>Complete each assessment and earn money</span>
+                </li>
+                <li className='flex gap-4 items-start font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen'>
+                    <FaHandPointRight />
+                  </span>
+                  <span>Better results equal more money</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className='text-primaryGreen font-[700] text-[25px] md:text-[30px] leading-7 mb-[15px] md:mb-[32px]'>
+                Benefits at a glance
+              </h3>
+              <ul>
+                <li className=' font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen mr-[13px]'>&#9679;</span>
+                  Easy start with assessments
+                </li>
+                <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen mr-[13px]'>&#9679;</span>
+                  Learn, unlearn, relearn and earn
+                </li>
+                <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen mr-[13px]'>&#9679;</span>
+                  Input your account details and get paid on a weekly basis
+                </li>
+                <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
+                  <span className='text-primaryGreen mr-[13px]'>&#9679;</span>
+                  24/7 support from our prompay community
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
       </Animation>
       <Animation style='zoom-in-left' placement='center-center'>
