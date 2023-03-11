@@ -80,23 +80,24 @@ export default function Home() {
             </h3>
             <ul>
               <li className=' font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Sign up at prompay.com
+                <span className='mr-[13px]'>&#9679;</span>Visit prompay.com and
+                sign up
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Fill out your user
-                profile
+                <span className='mr-[13px]'>&#9679;</span>Fill in your details
+                and complete your profile
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Complete short
-                assessments
+                <span className='mr-[13px]'>&#9679;</span>After you have signed
+                up and completed your profile, take assessments to start earning
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Good results more
-                money
+                <span className='mr-[13px]'>&#9679;</span>Complete each
+                assessment and earn money
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Get paid on a weekly
-                on monthly basis
+                <span className='mr-[13px]'>&#9679;</span>Better results equal
+                more money
               </li>
             </ul>
           </div>
@@ -114,8 +115,8 @@ export default function Home() {
                 relearn and earn
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
-                <span className='mr-[13px]'>&#9679;</span>Weekly or monthly
-                payment via Payzone wallet
+                <span className='mr-[13px]'>&#9679;</span>Input your account
+                details and get paid on a weekly or monthly basis
               </li>
               <li className='mt-[16px] md:mt-[24px] font-[700] text-18px] leading-5'>
                 <span className='mr-[13px]'>&#9679;</span>24/7 support from our
