@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
-import { userResetPassword } from '../../services/settingsService';
 import { toast } from 'react-toastify';
 import ButtonLoader from './../ButtonLoader';
+import { sendProblemReport } from '../../services/supportService';
 
 const bgColor = 'bg-gray-100';
 
@@ -33,12 +33,8 @@ function ReportProblem({ token }) {
       details: state.details,
     };
 
-    console.log(reportData);
-
-    return;
-
     try {
-      const { data } = await userResetPassword(reportData, token);
+      const { data } = await sendProblemReport(reportData, token);
       toast(`${data.message}`, { className: 'toast-style' });
       setLoadingSend(false);
       setOpenMode(false);
@@ -134,10 +130,14 @@ function ReportProblem({ token }) {
                   onChange={(e) => handleChange(e)}
                 ></textarea>
               </div>
-              <div className='w-full rounded-lg bg-light-gray'>
+              <div className='w-full rounded-lg bg-gray-300 px-4 py-2 text-[14px]'>
                 <p>
                   Let us know if you have ideas that can help make our products
                   better.
+                </p>
+                <p className=''>
+                  Note: Do not send ticket twice. Send once and we will respond
+                  in 3 working days.
                 </p>
               </div>
               <div className='text-center'>
