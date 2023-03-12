@@ -77,6 +77,53 @@ export default function Faq() {
                 better your earnings.{' '}
               </p>
             </FaqComponent>
+            <FaqComponent question={'What are the assessment about?'}>
+              <p>
+                The questions for each assessment covers subjects such as
+                Biology, English, Qualitative Reasoning, Football, Current
+                Affairs, and Commerce. The level of difficulty progresses as
+                more questions are answered.
+              </p>
+            </FaqComponent>
+            <FaqComponent
+              question={'How often can I make a withdrawal request?'}
+            >
+              <p>You can make a withdrawal request every two weeks</p>
+            </FaqComponent>
+            <FaqComponent
+              question={'How long does it take to process my earnings?'}
+            >
+              <p>
+                Your withdrawal request will be processed within a few minutes,
+                and your earnings will be deposited in your local bank account
+                in less than 24 hours.
+              </p>
+            </FaqComponent>
+            <FaqComponent
+              question={
+                'I have made a withdrawal request and haven’t received payment?'
+              }
+            >
+              <p>
+                Please contact support to investigate if your withdrawal is
+                still processing after 72 hours. Banks and local providers have
+                different timeframes for processing payments or may require
+                additional information.
+              </p>
+            </FaqComponent>
+            <FaqComponent
+              question={
+                'Is there a minimum balance required before the withdrawal?'
+              }
+            >
+              <p>
+                There is no specific minimum balance for now, as it can vary
+                from time to time.
+              </p>
+            </FaqComponent>
+            <FaqComponent question={'How many questions per assessment?'}>
+              <p>It can vary from time to time.</p>
+            </FaqComponent>
           </div>
         </section>
       </Animation>
