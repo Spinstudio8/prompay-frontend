@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { FcMenu } from 'react-icons/fc';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 const Nav = ({ path }) => {
@@ -49,10 +50,18 @@ const Nav = ({ path }) => {
         <div
           className={`${
             menu
-              ? 'top-[60px] opacity-100 pb-6 z-10 h-screen bg-white'
+              ? 'top-[0px] opacity-100 pb-6 z-10 h-screen bg-white'
               : 'hidden'
-          } md:basis-[70%] md:flex md:justify-between md:items-center md:static absolute md:bg-transparent bg-black w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 font-normal text-[20px]`}
+          } md:basis-[70%] md:flex md:justify-between md:items-center md:static fixed md:bg-transparent bg-black w-full left-0 top-0 bottom-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 font-normal text-[20px]`}
         >
+          <div className='absolute right-4'>
+            <AiFillCloseCircle
+              color='#ffffff'
+              size='35'
+              className='text-white md:hidden'
+              onClick={handleMenu}
+            />
+          </div>
           <ul className='md:flex md:justify-between'>
             <li className='my-3 md:my-0'>
               <Link
