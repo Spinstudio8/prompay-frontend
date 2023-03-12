@@ -34,14 +34,14 @@ const Footer = () => {
         </div>
       </div>
       <div
-        className='h-[60vh] md:h-[178px] z-10 relative md:px-[300px] text-white flex flex-col items-center md:items-stretch justify-center'
+        className='pt-10 z-10 relative md:px-[150px] lg:px-[300px] text-white flex flex-col items-center md:items-stretch justify-center'
         style={{
           background:
             'linear-gradient(92.56deg, #060720 47.49%, rgba(7, 7, 32, 0.96) 68.74%)',
         }}
       >
-        <div className='md:flex'>
-          <div className='flex justify-between mt-[20px] md:mt-0 md:gap-x-[100px]'>
+        <div className='md:flex px-[20px] md:px-0'>
+          <div className='flex justify-between flex-wrap mt-[20px] md:mt-0 gap-8 md:gap-x-[100px]'>
             <div className=''>
               <p className='font-[600] leading-4'>Company</p>
               <ul>
