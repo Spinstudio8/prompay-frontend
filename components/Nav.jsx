@@ -121,7 +121,7 @@ const Nav = ({ path }) => {
               </Link>
             </li>
           </ul>
-          <div className='flex justify-center items-center '>
+          <div className='flex justify-center items-center mr-4'>
             {!token && (
               <>
                 <Link

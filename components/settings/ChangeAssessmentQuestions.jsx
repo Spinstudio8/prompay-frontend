@@ -55,6 +55,10 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
     }
   };
 
+  useEffect(() => {
+    setState(settings.data);
+  }, []);
+
   return (
     <>
       <div

@@ -58,6 +58,10 @@ function ChangeWithdrawal({ token, settings, getSettings }) {
     }
   };
 
+  useEffect(() => {
+    setState(settings.data);
+  }, []);
+
   return (
     <>
       <div
