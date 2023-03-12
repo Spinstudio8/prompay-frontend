@@ -15,7 +15,7 @@ export default function OurProcess() {
 
   return (
     <>
-      <Meta title='Prompay | Home' />
+      <Meta title='Prompay | Our Process' />
       {/* <Animation style="flip-left" placement="center-center"> */}
       <div className="relative bg-[url('/images/bg/our-process.jpg')] h-[100vh] md:h-[160vh] bg-cover bg-center">
         <div

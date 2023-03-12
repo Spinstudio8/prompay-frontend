@@ -17,7 +17,7 @@ const Verified = () => {
   const router = useRouter().pathname;
   return (
     <>
-      <Meta title='Prompay | Contact' />
+      <Meta title='Prompay | Contact Us' />
 
       <div
         data-aos='fade-up'
