@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
-import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx';
-import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { startAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
@@ -30,7 +28,7 @@ const assessment = () => {
       setCurrentAssessment(data);
       setIsStart(true);
       setLoadingStart(false);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       setLoadingStart(false);
       if (err.response && err.response?.data) {
@@ -66,12 +64,7 @@ const assessment = () => {
               <p className='mt-8 text-red-600'>{errorMessage}</p>
             )}
 
-            {isStart && (
-              <StartAssessment
-                assessment={currentAssessment}
-                setIsStart={setIsStart}
-              />
-            )}
+            {isStart && <StartAssessment assessment={currentAssessment} />}
           </div>
         </div>
       </DashboardLayout>

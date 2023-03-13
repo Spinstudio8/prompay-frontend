@@ -8,7 +8,7 @@ import ButtonLoader from '../components/ButtonLoader';
 import ModalDialog from './ModalDialog';
 import SubmittingAssessmentLoader from './SubmittingAssessmentLoader';
 
-const StartAssessment = ({ assessment, setIsStart }) => {
+const StartAssessment = ({ assessment }) => {
   const router = useRouter();
   const { token } = useSelector((state) => state.user);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
@@ -40,14 +40,15 @@ const StartAssessment = ({ assessment, setIsStart }) => {
   const [secondsCount, setSecondsCount] = useState(0);
 
   const handlePrevNext = (button) => {
+    let totalQuestions = assessment.questions.length - 1;
     if (button === 'prev') {
       const current =
-        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 49;
+        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : totalQuestions;
       setCurrentQuestionNumber(current);
     }
     if (button === 'next') {
       const current =
-        currentQuestionNumber < 49 ? currentQuestionNumber + 1 : 0;
+        currentQuestionNumber < totalQuestions ? currentQuestionNumber + 1 : 0;
       setCurrentQuestionNumber(current);
     }
     // console.log(assessmentAnswer);
@@ -99,7 +100,6 @@ const StartAssessment = ({ assessment, setIsStart }) => {
       const { data } = await submitAssessment(newAssessmentAnswer, token);
       setLoadingSubmit(false);
       setAssessmentResult(data);
-      setIsStart(false);
       setModalState(true);
     } catch (err) {
       setLoadingSubmit(false);
@@ -155,22 +155,22 @@ const StartAssessment = ({ assessment, setIsStart }) => {
     return () => clearInterval(intervalId);
   }, [intervalId, assessmentTime]);
 
-  const handleWindowBlur = () => {
-    console.log('Window lost focus!');
-    // pause video or stop animation
-  };
+  // const handleWindowBlur = () => {
+  //   console.log('Window lost focus!');
+  //   // pause video or stop animation
+  // };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('blur', handleWindowBlur);
-    }
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('blur', handleWindowBlur);
+  //   }
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('blur', handleWindowBlur);
-      }
-    };
-  }, [handleWindowBlur]); // add handleWindowBlur to dependency array
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       window.removeEventListener('blur', handleWindowBlur);
+  //     }
+  //   };
+  // }, [handleWindowBlur]); // add handleWindowBlur to dependency array
 
   return (
     <>
@@ -184,7 +184,7 @@ const StartAssessment = ({ assessment, setIsStart }) => {
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
           {currentQuestion?.subject.title}:
         </h3>
-        <div className='relative w-full min-h-screen'>
+        <div className='relative w-full min-h-[150vh]'>
           {assessment.questions.map((item, index) => (
             <div
               key={item._id}
