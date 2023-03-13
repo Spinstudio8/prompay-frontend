@@ -97,7 +97,7 @@ const Profile = () => {
   return (
     <>
       <DashboardLayout>
-        <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
+        <div className='text-black dark:bg-main-dark-bg'>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div
               className='w-full bg-white min-h-[200px] rounded-lg px-[15px] py-[15px] mb-[70px] dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'
@@ -111,7 +111,7 @@ const Profile = () => {
               ) : (
                 <div className='w-full'>
                   <div className='h-[80px] md:h-[140px] bg-primaryGreen rounded-t-lg'></div>
-                  <div className='relative bg-white rounded-b-lg shadow-md px-4 pb-5 mb-2'>
+                  <div className='relative bg-white dark:text-black rounded-b-lg shadow-md px-4 pb-5 mb-2'>
                     <span className='inline-block text-[70px] md:text-[130px] rounded-[50%] bg-white p-1 mt-[-32px] md:mt-[-42px] ml-[3%]'>
                       <FaUserCircle />
                     </span>

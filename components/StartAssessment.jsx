@@ -42,13 +42,14 @@ const StartAssessment = ({ assessment }) => {
   const handlePrevNext = (button) => {
     let totalQuestions = assessment.questions.length - 1;
     if (button === 'prev') {
-      const current =
-        currentQuestionNumber > 0 ? currentQuestionNumber - 1 : totalQuestions;
+      const current = currentQuestionNumber > 0 ? currentQuestionNumber - 1 : 0;
       setCurrentQuestionNumber(current);
     }
     if (button === 'next') {
       const current =
-        currentQuestionNumber < totalQuestions ? currentQuestionNumber + 1 : 0;
+        currentQuestionNumber < totalQuestions
+          ? currentQuestionNumber + 1
+          : totalQuestions;
       setCurrentQuestionNumber(current);
     }
     // console.log(assessmentAnswer);

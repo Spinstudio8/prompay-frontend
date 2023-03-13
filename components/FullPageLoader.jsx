@@ -15,7 +15,7 @@ export default function FullPageLoader() {
               visible={true}
             />
           </div>
-          <p className='mt-6 text-white'>Signing out...</p>
+          <p className='mt-6 dark:text-black text-black'>Signing out...</p>
         </div>
       </div>
     </>

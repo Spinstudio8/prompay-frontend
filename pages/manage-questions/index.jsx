@@ -119,7 +119,7 @@ const ManageQuestions = () => {
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <div className='flex justify-between mb-[20px] md:mb-[49px]'>
-              <h2 className='font-[500] text-[24px] leading-7'>Questions</h2>
+              <h2 className='font-[500] text-[24px] leading-7 text-black dark:text-white'>Questions</h2>
               <Link
                 href='/manage-questions/add'
                 className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
