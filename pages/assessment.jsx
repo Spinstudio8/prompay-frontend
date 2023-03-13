@@ -21,7 +21,7 @@ const assessment = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleStart = async () => {
-    console.log('start');
+    // console.log('start');
     setLoadingStart(true);
     setErrorMessage('');
 
@@ -42,11 +42,12 @@ const assessment = () => {
   return (
     <>
       <DashboardLayout>
-        <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
+        <div className='text-black'>
           <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
             <h2 className='mt-8 md:mt-0 font-[500] text-[24px] leading-7'>
               Answer more to earn more
             </h2>
+
             {!isStart && !loadingStart && (
               <button
                 onClick={handleStart}
@@ -65,7 +66,12 @@ const assessment = () => {
               <p className='mt-8 text-red-600'>{errorMessage}</p>
             )}
 
-            {isStart && <StartAssessment assessment={currentAssessment} />}
+            {isStart && (
+              <StartAssessment
+                assessment={currentAssessment}
+                setIsStart={setIsStart}
+              />
+            )}
           </div>
         </div>
       </DashboardLayout>

@@ -24,7 +24,7 @@ function DashboardLayout({ children }) {
           <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
             <Navbar />
           </div>
-          <div>{children}</div>
+          <div className='bg-main-bg'>{children}</div>
         </div>
       </div>
     </div>

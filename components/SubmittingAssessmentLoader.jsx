@@ -4,7 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 export default function SubmittingAssessmentLoader() {
   return (
     <>
-      <div className='bg-[rgba(0,0,0,0.8)] w-screen h-screen fixed top-0 left-0 flex justify-center items-center z-[9000]'>
+      <div className='bg-[rgba(0,0,0,0.92)] w-screen h-screen fixed top-0 left-0 flex justify-center items-center z-[9000]'>
         <div className='flex flex-col items-center justify-center'>
           <div>
             <RotatingLines

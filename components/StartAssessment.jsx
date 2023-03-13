@@ -8,7 +8,7 @@ import ButtonLoader from '../components/ButtonLoader';
 import ModalDialog from './ModalDialog';
 import SubmittingAssessmentLoader from './SubmittingAssessmentLoader';
 
-const StartAssessment = ({ assessment }) => {
+const StartAssessment = ({ assessment, setIsStart }) => {
   const router = useRouter();
   const { token } = useSelector((state) => state.user);
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
@@ -33,6 +33,12 @@ const StartAssessment = ({ assessment }) => {
 
   const [modalState, setModalState] = useState(false);
 
+  const [assessmentTime, setAssessmentTime] = useState({
+    millis: 0,
+    mins: 0,
+  });
+  const [secondsCount, setSecondsCount] = useState(0);
+
   const handlePrevNext = (button) => {
     if (button === 'prev') {
       const current =
@@ -44,14 +50,14 @@ const StartAssessment = ({ assessment }) => {
         currentQuestionNumber < 49 ? currentQuestionNumber + 1 : 0;
       setCurrentQuestionNumber(current);
     }
-    console.log(assessmentAnswer);
+    // console.log(assessmentAnswer);
   };
 
   const handleChange = (e) => {
     let answerObj = assessmentAnswer.find(
       (item) => item.question == e.target.name
     );
-    console.log(e.target.value);
+    // console.log(e.target.value);
     if (answerObj) {
       answerObj.answer = e.target.value;
       const newAssessmentAnswer = assessmentAnswer.filter(
@@ -93,6 +99,7 @@ const StartAssessment = ({ assessment }) => {
       const { data } = await submitAssessment(newAssessmentAnswer, token);
       setLoadingSubmit(false);
       setAssessmentResult(data);
+      setIsStart(false);
       setModalState(true);
     } catch (err) {
       setLoadingSubmit(false);
@@ -107,14 +114,73 @@ const StartAssessment = ({ assessment }) => {
   };
 
   useEffect(() => {
-    console.log(currentQuestionNumber);
+    // console.log(currentQuestionNumber);
     setCurrentQuestion(assessment.questions[currentQuestionNumber]);
   }, [currentQuestionNumber]);
+
+  const calculateTime = (assessment) => {
+    const millis = assessment.endTime - assessment.startTime;
+    const mins = Math.round(millis / 60000); // conversion to mins
+    setAssessmentTime({ millis, mins });
+  };
+
+  useEffect(() => {
+    calculateTime(assessment);
+  }, []);
+
+  let intervalId = 0;
+  let count = 0;
+  const seconds = 60;
+
+  const startTimer = () => {
+    count = count < seconds ? count + 1 : 0;
+    setSecondsCount(count);
+
+    if (count === seconds) {
+      const remainingMins =
+        assessmentTime.mins > 0 ? assessmentTime.mins - 1 : 0;
+
+      if (remainingMins !== 0) {
+        setAssessmentTime({ ...assessmentTime, mins: remainingMins });
+      } else {
+        clearInterval(intervalId);
+        handleSubmit();
+      }
+    }
+  };
+
+  useEffect(() => {
+    intervalId = setInterval(startTimer, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [intervalId, assessmentTime]);
+
+  const handleWindowBlur = () => {
+    console.log('Window lost focus!');
+    // pause video or stop animation
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('blur', handleWindowBlur);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('blur', handleWindowBlur);
+      }
+    };
+  }, [handleWindowBlur]); // add handleWindowBlur to dependency array
 
   return (
     <>
       {loadingSubmit && <SubmittingAssessmentLoader />}
-      <div className='mt-[25px] md:mt-[40px]'>
+      <div className='mt-[25px] md:mt-[40px] text-black'>
+        <div className='w-[200px] h-[50px] bg-white shadow-md flex justify-center items-center font-semibold text-[1.2rem] mb-8'>
+          <span>
+            {assessmentTime.mins} mins left: {secondsCount}
+          </span>
+        </div>
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
           {currentQuestion?.subject.title}:
         </h3>
@@ -140,7 +206,7 @@ const StartAssessment = ({ assessment }) => {
                   ></p>
                 </div>
                 <div
-                  className='mt-[40px] w-full bg-white min-h-[200px] rounded-lg px-[15px] py-[15px] md:px-[50px] md:py-[20px] mb-[70px] dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white'
+                  className='mt-[40px] w-full bg-white min-h-[200px] rounded-lg px-[15px] py-[15px] md:px-[50px] md:py-[20px] mb-[70px] text-black dark:text-gray-200 dark:bg-main-dark-bg'
                   style={{
                     boxShadow:
                       '0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.1)',
