@@ -184,7 +184,7 @@ const StartAssessment = ({ assessment, setIsStart }) => {
         <h3 className='font-[500] text-[20px] leading-7 mb-4'>
           {currentQuestion?.subject.title}:
         </h3>
-        <div className='relative w-full'>
+        <div className='relative w-full min-h-screen'>
           {assessment.questions.map((item, index) => (
             <div
               key={item._id}

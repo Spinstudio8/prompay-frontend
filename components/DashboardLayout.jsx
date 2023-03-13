@@ -19,7 +19,7 @@ function DashboardLayout({ children }) {
           className={`
               ${
                 activeMenu ? 'md:ml-[20%]' : 'flex-2'
-              } dark:bg-main-bg bg-main-bg min-h-[140vh] hide-scrollbar overflow-auto w-full`}
+              } dark:bg-main-bg bg-main-bg hide-scrollbar overflow-auto w-full`}
         >
           <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
             <Navbar />
