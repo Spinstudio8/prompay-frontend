@@ -10,6 +10,7 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
   const [state, setState] = useState({
     totalQuestions: '',
     pricePerQuestion: '',
+    assessmentTime: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
   const [isEdit, setEditMode] = useState(false);
@@ -31,6 +32,7 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
     const questionData = {
       totalQuestions: state.totalQuestions,
       pricePerQuestion: state.pricePerQuestion,
+      assessmentTime: state.assessmentTime,
     };
 
     try {
@@ -45,6 +47,7 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
       setState({
         totalQuestions: '',
         pricePerQuestion: '',
+        assessmentTime: '',
       });
       getSettings();
     } catch (err) {
@@ -75,9 +78,10 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
               <BsFillQuestionSquareFill />
             </div>
             <div>
-              <h3>Assessment Question</h3>
+              <h3>Assessment Settings</h3>
               <p className='text-[rgba(0,0,0,0.6)] hidden xs:block dark:text-[rgba(255,255,255,0.8)]'>
-                Set the total questions and price per question
+                Set the total questions, price per question
+                <br /> and assessment time
               </p>
             </div>
           </div>
@@ -117,7 +121,7 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
                   </div>
                   <div className='mb-[15px]'>
                     <label
-                      htmlFor='maxWithdrawal'
+                      htmlFor='pricePerQuestion'
                       className='font-semibold mr-4 xs:w-[150px] block xs:inline-block xs:text-right'
                     >
                       Price per question
@@ -127,6 +131,23 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
                       type='number'
                       name='pricePerQuestion'
                       value={state.pricePerQuestion}
+                      className='bg-light-gray border-black border rounded pl-2 no-arrows'
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </div>
+                  <div className='mb-[15px]'>
+                    <label
+                      htmlFor='assessmentTime'
+                      className='font-semibold mr-4 xs:w-[150px] block xs:inline-block xs:text-right'
+                    >
+                      Assessment time
+                    </label>
+                    <input
+                      id='assessmentTime'
+                      type='number'
+                      name='assessmentTime'
+                      value={state.assessmentTime}
+                      placeholder='minutes'
                       className='bg-light-gray border-black border rounded pl-2 no-arrows'
                       onChange={(e) => handleChange(e)}
                     />
@@ -164,6 +185,12 @@ function ChangeAssessmentQuestions({ token, settings, getSettings }) {
                   Price per question -{' '}
                   <span className='font-semibold'>
                     ₦ {settings.data.pricePerQuestion}
+                  </span>
+                </p>
+                <p>
+                  Assessment time -{' '}
+                  <span className='font-semibold'>
+                    {settings.data.assessmentTime} (mins)
                   </span>
                 </p>
               </div>
