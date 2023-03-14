@@ -73,16 +73,18 @@ const Footer = () => {
               <p className='font-[600] leading-4'>Others</p>
               <ul>
                 <li className='font-[400] text-[13px] leading-3 mt-[16px]'>
-                  <Link href={'#terms'}>Terms</Link>
+                  <a href={'/terms'} target={'_blank'} rel={'noreferrer'}>
+                    Terms
+                  </a>
                 </li>
                 <li className='font-[400] text-[13px] leading-3 mt-[16px]'>
-                  <Link href={'#privacy'}>Privacy</Link>
+                  <a href={'/privacy'} target={'_blank'} rel={'noreferrer'}>Privacy</a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className='flex justify-center mt-14 mb-4'>
+        <div className='flex justify-center mt-14 mb-4 text-[13px]'>
           <span>Copyright 2023 promPay</span>
         </div>
       </div>
