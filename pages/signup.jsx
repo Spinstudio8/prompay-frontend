@@ -10,6 +10,7 @@ import ButtonLoader from '../components/ButtonLoader';
 import { signup } from '../services/userService';
 import { setVerificationEmail } from '../store/slice/userSlice';
 import withLogoutAuth from '../auth/withLogoutAuth';
+import { toHtmlDate } from './../utils/dateHelper';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -104,7 +105,7 @@ const Signup = () => {
         <div className='h-full flex items-center py-3'>
           {/* <Animation style="flip-left" placement="center-center"> */}
 
-          <div className='relative z-10 w-4/5 md:w-[722px] md:h-[735px] bg-white shadow-sm mx-auto  text-black'>
+          <div className='relative z-10 w-4/5 md:w-[722px] md:h-[800px] bg-white shadow-sm mx-auto  text-black'>
             {isError && (
               <div className='z-10 w-full md:w-[722px]  py-[12px] bg-red-600 flex flex-col items-center justify-center mb-3'>
                 <p className='text-white text-center'>{errorMessage}</p>
@@ -162,6 +163,7 @@ const Signup = () => {
                     </label>
                     <input
                       type='date'
+                      max={toHtmlDate(new Date().toLocaleDateString())}
                       name='birthDay'
                       id='birthDay'
                       className='md:w-[263px] h-[42px] bg-[#F7F6F6] border border-[#CCCCCC] rounded p-2'
