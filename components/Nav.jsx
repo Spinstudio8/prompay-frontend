@@ -5,6 +5,7 @@ import { FcMenu } from 'react-icons/fc';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+
 const Nav = ({ path }) => {
   const token = useSelector((state) => state.user.token);
 
@@ -49,10 +50,8 @@ const Nav = ({ path }) => {
         </div>
         <div
           className={`${
-            menu
-              ? 'top-[0px] opacity-100 pb-6 z-10 h-screen bg-white'
-              : 'hidden'
-          } md:basis-[70%] md:flex md:justify-between md:items-center md:static fixed md:bg-transparent bg-black w-full left-0 top-0 bottom-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 font-normal text-[20px]`}
+            menu ? 'opacity-100 pb-6 z-10 h-screen bg-white' : 'hidden'
+          } md:basis-[70%] md:flex md:justify-between md:items-center md:static fixed md:bg-transparent bg-black w-full left-0 top-0 bottom-0 right-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 font-normal text-[20px]`}
         >
           <div className='absolute right-4'>
             <AiFillCloseCircle
