@@ -155,9 +155,9 @@ const Wallet = () => {
                 Transactions
               </p>
               <div className='flex flex-col md:flex-row gap-y-4 gap-x-4'>
-                <button className='bg-transparent border border-primaryGreen hover:bg-primaryGreen text-primaryGreen hover:text-white px-5 py-3 flex items-center justify-center rounded'>
+                {/* <button className='bg-transparent border border-primaryGreen hover:bg-primaryGreen text-primaryGreen hover:text-white px-5 py-3 flex items-center justify-center rounded'>
                   Convert to data/Airtime
-                </button>
+                </button> */}
                 <button
                   onClick={() => setModalState(!modalState)}
                   className=' bg-primaryGreen text-white px-5 py-3 flex items-center justify-center rounded'
