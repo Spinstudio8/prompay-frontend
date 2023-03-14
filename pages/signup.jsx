@@ -23,6 +23,7 @@ const Signup = () => {
     gender: '',
     email: '',
     phone: '',
+    location: '',
     password: '',
     confirmPassword: '',
   });
@@ -64,6 +65,7 @@ const Signup = () => {
       gender: state.gender,
       email: state.email,
       phone: state.phone,
+      location: state.location,
       password: state.password,
       confirmPassword: state.confirmPassword,
     };
@@ -109,7 +111,7 @@ const Signup = () => {
               </div>
             )}
             <div className='flex flex-col items-center justify-center py-7 md:py-0'>
-              <h3 className='font-[700] text-[24px]'>Sign Up</h3>
+              <h3 className='font-[700] text-[24px] md:mt-4'>Sign Up</h3>
               <p className='font-[300] text-[15px] leading-4 my-[14px]'>
                 It's great to have you on the team!
               </p>
@@ -167,47 +169,22 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className='mt-[15px]'>
+                  <div className=''>
                     <label
-                      htmlFor='gender'
+                      htmlFor='location'
                       className='font-[300] text-[15px] leading-8 block text-[#979292]'
                     >
-                      Gender
+                      Location
                     </label>
-                    <div className='flex items-end'>
-                      <div className='flex items-center justify-center gap-x-2'>
-                        <input
-                          type='radio'
-                          name='gender'
-                          id='male'
-                          className='w-[23px] h-[23px] bg-[#F7F6F6] border  border-[#CCCCCC] rounded p-2'
-                          value='male'
-                          checked={state.gender === 'male'}
-                          onChange={handleChange}
-                        />{' '}
-                        <label
-                          htmlFor='male'
-                          className='font-[300] text-[15px] text-[#979292]'
-                        >
-                          Male
-                        </label>
-                      </div>
-                      <input
-                        type='radio'
-                        name='gender'
-                        id='female'
-                        className='w-[23px] h-[23px] bg-[#F7F6F6] border border-[#CCCCCC] rounded p-2 ml-[20px]'
-                        value='female'
-                        checked={state.gender === 'female'}
-                        onChange={handleChange}
-                      />{' '}
-                      <label
-                        htmlFor='female'
-                        className='font-[300] text-[15px] ml-1 text-[#979292]'
-                      >
-                        Female
-                      </label>
-                    </div>
+                    <input
+                      type='text'
+                      name='location'
+                      id='location'
+                      placeholder='City'
+                      className='md:w-[263px] h-[42px] bg-[#F7F6F6] border border-[#CCCCCC] rounded p-2'
+                      value={state.location}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
                 <div className='md:flex gap-x-[31px] mt-[15px] md:mt-[29px]'>
@@ -282,15 +259,59 @@ const Signup = () => {
                     />
                   </div>
                 </div>
+                <div className='flex justify-center mt-[15px] md:mt-[29px]'>
+                  <div className=''>
+                    <label
+                      htmlFor='gender'
+                      className='font-[300] text-[15px] leading-8 block text-[#979292]'
+                    >
+                      Gender
+                    </label>
+                    <div className='flex items-end'>
+                      <div className='flex items-center justify-center gap-x-2'>
+                        <input
+                          type='radio'
+                          name='gender'
+                          id='male'
+                          className='w-[23px] h-[23px] bg-[#F7F6F6] border  border-[#CCCCCC] rounded p-2'
+                          value='male'
+                          checked={state.gender === 'male'}
+                          onChange={handleChange}
+                        />{' '}
+                        <label
+                          htmlFor='male'
+                          className='font-[300] text-[15px] text-[#979292]'
+                        >
+                          Male
+                        </label>
+                      </div>
+                      <input
+                        type='radio'
+                        name='gender'
+                        id='female'
+                        className='w-[23px] h-[23px] bg-[#F7F6F6] border border-[#CCCCCC] rounded p-2 ml-[20px]'
+                        value='female'
+                        checked={state.gender === 'female'}
+                        onChange={handleChange}
+                      />{' '}
+                      <label
+                        htmlFor='female'
+                        className='font-[300] text-[15px] ml-1 text-[#979292]'
+                      >
+                        Female
+                      </label>
+                    </div>
+                  </div>
+                </div>
                 <div className='flex gap-[24px] justify-center mt-[20px] md:mt-0'>
                   {loadingSubmit ? (
-                    <span className='md:mt-[80px]'>
+                    <span className='md:mt-[40px]'>
                       <ButtonLoader />
                     </span>
                   ) : (
                     <button
                       type='submit'
-                      className='hover:bg-primaryBlue  bg-primaryGreen text-white py-[16px] px-24px w-[154px] h-[56px] rounded-lg border hover:border-none text-[16px] font-[900] leading-5 text-center md:mt-[80px]'
+                      className='hover:bg-primaryBlue  bg-primaryGreen text-white py-[16px] px-24px w-[154px] h-[56px] rounded-lg border hover:border-none text-[16px] font-[900] leading-5 text-center md:mt-[40px]'
                     >
                       Sign Up
                     </button>

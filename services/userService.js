@@ -17,6 +17,7 @@ export function signup(user) {
       lastName: user.lastName,
       email: user.email,
       phone: user.phone,
+      location: user.location,
       birthDay: user.birthDay,
       gender: user.gender,
       password: user.password,

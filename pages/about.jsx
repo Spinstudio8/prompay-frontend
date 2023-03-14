@@ -22,23 +22,24 @@ const About = () => {
             About Us
           </h1>
           <Animation style='fade-right' placement='top-center'>
-            <img src='/images/bg/about.png' alt='about us' className='' />
+            <img src='/images/bg/about.jpg' alt='about us' className='' />
             {/* <TextAnimation time={0.1}> */}
             <p className=' mt-[25px] md:mt-[111px] text-[20px] md:text-[35px] font-[300] leading-10 text-white px-[20px]  md:px-[220px]'>
-              Hey there! <br /><br />
+              Hey there! <br />
+              <br />
               Have you heard of PromPay? It's an online platform that lets you
               earn money while you learn! At PromPay, everybody has the
               opportunity to earn and learn online. Our mainstay is financial
               stability and cognitive thinking—and with PromPay, you can get
               both! Our team is made up of passionate educators and technology
               enthusiasts who are committed to making learning accessible to
-              all. We believe that education should be not only informative but
-              also fun and rewarding, which is why we've designed our platform
-              to be just that. Here is how it works: You take an exam, earn and
-              learn. It is as simple as that! So, what do you say? Ready to
-              start earning and learning with PromPay? Join us today and start
-              your journey toward a brighter, smarter and financially stable
-              future!
+              all. <br /> <br /> We believe that education should be not only
+              informative but also fun and rewarding, which is why we've
+              designed our platform to be just that. Here is how it works: You
+              take an exam, earn and learn. It is as simple as that! So, what do
+              you say? Ready to start earning and learning with PromPay? Join us
+              today and start your journey toward a brighter, smarter and
+              financially stable future!
             </p>
             {/* </TextAnimation> */}
           </Animation>
