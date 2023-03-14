@@ -5,7 +5,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { FaToggleOn, FaToggleOff } from 'react-icons/fa';
+import { FaToggleOn, FaToggleOff, FaUserCircle } from 'react-icons/fa';
 import { IoEyeSharp } from 'react-icons/io5';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -126,11 +126,14 @@ const Navbar = () => {
           onMouseLeave={() => setDropDown(false)}
           // onClick={() => handleClick("userProfile")}
         >
-          <img
+          {/* <img
             src='/images/team/ino1.png'
             alt='avatar'
             className='rounded-full w-8 h-8 ml-4'
-          />
+          /> */}
+          <span className='text-[1.8rem]'>
+            <FaUserCircle />
+          </span>
           <p className='text-gray-400 text-[10px] md:text-14 font-bold ml-1'>
             {`${tokenPayload?.firstName} ${tokenPayload?.lastName}`}
           </p>

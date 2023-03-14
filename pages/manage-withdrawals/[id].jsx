@@ -3,6 +3,7 @@ import DashboardLayout from '../../components/DashboardLayout';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { FaUserCircle } from 'react-icons/fa';
 import {
   getWithdrawalById,
   processWithdrawal,
@@ -43,7 +44,7 @@ const WithdrawalRequest = ({ id }) => {
     const getWithdrawal = async () => {
       try {
         const { data } = await getWithdrawalById(id, token);
-        console.log(data);
+        // console.log(data);
         setWithdrawal(data);
         setUserProfile(data.user);
         setLoadingWithdrawal(false);
@@ -192,12 +193,8 @@ const WithdrawalRequest = ({ id }) => {
                     User Profile
                   </h2>
                   <div className='flex flex-col gap-6 sm:gap-10 sm:flex-row justify-center items-center'>
-                    <div className='w-[150px] h-[150px]'>
-                      <img
-                        src='/images/team/ino2.png'
-                        alt='Profile picture'
-                        className='rounded-[50%] w-full h-full'
-                      />
+                    <div className='text-[90px] md:text-[130px]'>
+                      <FaUserCircle />
                     </div>
                     <div>
                       <p className='font-semibold'>{`${userProfile.firstName} ${userProfile.lastName}`}</p>

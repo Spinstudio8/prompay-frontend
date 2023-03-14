@@ -16,13 +16,29 @@ const About = () => {
       <Meta title='Prompay | About Us' />
 
       <div className='bg-primaryBlue bg-cover z-10 relative '>
-        <Nav path={router} />
+        <div className="relative bg-[url('/images/bg/about.jpg')] h-[100vh] md:h-[160vh] bg-cover bg-center">
+          <div
+            className='absolute top-0 left-0 right-0 bottom-0 min-h-[100vh] z-[1]'
+            style={{
+              background:
+                'linear-gradient(84.59deg, rgba(0, 0, 0, 0.58) 17.84%, rgba(0, 0, 0, 0.17) 52.14%, rgba(0, 0, 0, 0.65) 80.9%)',
+            }}
+          />{' '}
+          <Nav path={router} />{' '}
+          <div className='flex flex-col items-center md:items-end justify-center relative text-white z-10 md:pr-[27px] text-center h-[65%]'>
+            <div className='w-full md:w-[538px] md:mt-[0px]'>
+              <h1 className='text-white text-[40px] md:text-[100px] font-[700] leading-[50px] md:leading-[100px] '>
+                About Us
+              </h1>
+              <p className='text-[20px] md:text-[29px] leading-6 md:leading-10 my-[20px]  '>
+                Earn while you learn.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className='in h-full flex flex-col items-center pb-[70px]'>
-          <h1 className='font-[700] text-[40px] md:text-[80px] leading-10 mb-[55px] text-white md:mt-[62px] mt-[30px]'>
-            About Us
-          </h1>
           <Animation style='fade-right' placement='top-center'>
-            <img src='/images/bg/about.jpg' alt='about us' className='' />
             {/* <TextAnimation time={0.1}> */}
             <p className=' mt-[25px] md:mt-[111px] text-[20px] md:text-[35px] font-[300] leading-10 text-white px-[20px]  md:px-[220px]'>
               Hey there! <br />

@@ -309,6 +309,7 @@ export default function Terms() {
           </p>
           <br />
           <p>We will get back to you as quickly as possible!</p>
+          <br />
         </div>
       </div>
     </>
