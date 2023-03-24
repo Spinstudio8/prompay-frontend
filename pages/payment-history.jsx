@@ -8,6 +8,7 @@ import { paymentColumns } from '../components/TableData';
 import differenceBy from 'lodash/differenceBy';
 import { getUserWallet } from '../services/userService';
 import withLoginAuth from '../auth/withLoginAuth';
+import Meta from '../components/Meta';
 
 // import Export from "react-data-table-component";
 
@@ -125,6 +126,7 @@ const PaymentHistory = () => {
 
   return (
     <>
+      <Meta title='Prompay | Payment history' />
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { getUserDashboard } from '../services/userService';
 import withLoginAuth from '../auth/withLoginAuth';
+import Meta from '../components/Meta';
 
 const DashboardCard = ({ icon, figure, title, middle, bg, textColor }) => (
   <div
@@ -63,6 +64,7 @@ const dashboard = () => {
 
   return (
     <>
+      <Meta title='Prompay | Dashboard' />
       {!tokenPayload?.isAdmin && (
         <DashboardLayout>
           <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white pt-[50px] md:pt-0'>

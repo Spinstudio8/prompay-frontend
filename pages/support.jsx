@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DashboardLayout from '../components/DashboardLayout';
 import withLoginAuth from '../auth/withLoginAuth';
 import ReportProblem from '../components/support/ReportProblem';
+import Meta from '../components/Meta';
 
 const Support = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const Support = () => {
 
   return (
     <>
+      <Meta title='Prompay | Support' />
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>

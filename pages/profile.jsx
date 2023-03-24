@@ -8,6 +8,7 @@ import { toDateString, toHtmlDate } from '../utils/dateHelper';
 import { setUpdateUser, setLogin } from '../store/slice/userSlice';
 import withLoginAuth from '../auth/withLoginAuth';
 import { toast } from 'react-toastify';
+import Meta from '../components/Meta';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -96,6 +97,7 @@ const Profile = () => {
 
   return (
     <>
+      <Meta title='Prompay | Profile' />
       <DashboardLayout>
         <div className='text-black dark:bg-main-dark-bg'>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>

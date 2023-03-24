@@ -5,6 +5,7 @@ import { startAssessment } from '../services/assessmentService';
 import ButtonLoader from '../components/ButtonLoader';
 import StartAssessment from '../components/StartAssessment';
 import withLoginAuth from '../auth/withLoginAuth';
+import Meta from '../components/Meta';
 
 const assessment = () => {
   const { token } = useSelector((state) => state.user);
@@ -39,6 +40,7 @@ const assessment = () => {
 
   return (
     <>
+      <Meta title='Prompay | Assessment' />
       <DashboardLayout>
         <div className='text-black'>
           <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>

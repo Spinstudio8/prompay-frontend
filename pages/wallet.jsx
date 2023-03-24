@@ -8,6 +8,7 @@ import { transactionColumns } from '../components/TableData';
 import differenceBy from 'lodash/differenceBy';
 import { getUserWallet } from '../services/userService';
 import WithdrawModal from '../components/WithdrawModal';
+import Meta from '../components/Meta';
 import withLoginAuth from '../auth/withLoginAuth';
 
 const SearchComponent = ({ onFilter, filterText }) => (
@@ -124,6 +125,7 @@ const Wallet = () => {
 
   return (
     <>
+      <Meta title='Prompay | Wallet' />
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px] text-black'>

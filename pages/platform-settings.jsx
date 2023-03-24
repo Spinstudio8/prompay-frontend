@@ -6,6 +6,7 @@ import ChangeWithdrawal from '../components/settings/ChangeWithdrawal';
 import ChangeAssessmentQuestions from '../components/settings/ChangeAssessmentQuestions';
 import { getAllSettings } from '../services/settingsService';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 
 const PlatformSettings = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const PlatformSettings = () => {
 
   return (
     <>
+      <Meta title='Prompay | Platform Settings' />
       <DashboardLayout>
         <div className='dark:text-gray-200 dark:bg-main-dark-bg dark:hover:text-white  '>
           <div className='pt-[110px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
