@@ -59,13 +59,6 @@ export default function Home() {
       </div>
       {/* </Animation> */}
       <Info />
-      {/* <div
-        className="absolute top-0 left-0 right-0 bottom-0 h-[160vh] z-[1]"
-        style={{
-          background:
-            "linear-gradient(84.59deg, rgba(0, 0, 0, 0.58) 17.84%, rgba(0, 0, 0, 0.17) 52.14%, rgba(0, 0, 0, 0.65) 80.9%)",
-        }}
-      /> */}
       <Animation style='fade-up' placement='center-center'>
         <section className="relative z-20 py-[52px] px-[16px] sm:px-[50px] md:px-[100px] md:flex justify-evenly text-white bg-[url('/images/bg/home.png')] md:h-[457px] bg-cover bg-fixed bg-center  break">
           <div
