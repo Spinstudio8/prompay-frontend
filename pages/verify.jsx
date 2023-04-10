@@ -140,7 +140,7 @@ const Verify = () => {
                 <span className='text-center cursor-pointer'>
                   Didn’t get a code?{' '}
                   <span
-                    className='cursor-pointer underline active:text-green-500'
+                    className='cursor-pointer underline active:text-green-500 text-black'
                     onClick={resendCode}
                   >
                     Click to resend
