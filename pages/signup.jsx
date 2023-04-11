@@ -93,7 +93,7 @@ const Signup = () => {
       <Meta title='Prompay | Signup' />
       <div
         data-aos='fade-up-left'
-        className="relative bg-[url('/images/bg/signup.png')] bg-center py-[25px] md:pb-[52px] md:z-0 bg-cover z-10"
+        className="relative bg-[url('/images/bg/signup.jpg')] bg-center py-[25px] md:pb-[52px] md:z-0 bg-cover z-10"
       >
         <div
           className='absolute top-0 left-0 right-0 bottom-0 h-full  z-[1]'

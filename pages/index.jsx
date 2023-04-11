@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Meta title='Prompay | Home' />
       {/* <Animation style="flip-left" placement="center-center"> */}
-      <div className="relative bg-[url('/images/bg/home.png')] h-[100vh] md:h-[160vh] bg-cover bg-center">
+      <div className="relative bg-[url('/images/bg/home.jpg')] h-[100vh] md:h-[160vh] bg-cover bg-center">
         <div
           className='absolute top-0 left-0 right-0 bottom-0 min-h-[100vh] z-[1]'
           style={{

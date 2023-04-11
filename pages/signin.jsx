@@ -80,7 +80,7 @@ const Signin = () => {
 
       <div
         data-aos='fade-left'
-        className="relative bg-[url('/images/bg/login.png')] bg-cover bg-center z-10 md:pb-[52px] md:z-0 "
+        className="relative bg-[url('/images/bg/login.jpg')] bg-cover bg-center z-10 md:pb-[52px] md:z-0 "
       >
         <div
           className='absolute top-0 left-0 right-0 bottom-0  z-[1] h-full'
