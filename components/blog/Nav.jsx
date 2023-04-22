@@ -61,7 +61,7 @@ const Nav = ({ path }) => {
               onClick={handleMenu}
             />
           </div>
-          <ul className="md:flex md:justify-between">
+          <ul className="md:flex md:justify-between md:text-black">
             <li className="my-3 md:my-0">
               <Link
                 className={`${
@@ -136,7 +136,7 @@ const Nav = ({ path }) => {
               <>
                 <Link
                   href="/signin"
-                  className="py-[16px] px-[16px] rounded-lg text-[14px] font-[500] leading-5 text-center"
+                  className="py-[16px] px-[16px] rounded-lg text-[14px] md:text-black font-[500] leading-5 text-center"
                 >
                   Login
                 </Link>

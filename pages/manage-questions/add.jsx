@@ -1,31 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import 'react-quill/dist/quill.snow.css'; // import the styles
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import DashboardLayout from '../../components/DashboardLayout';
-import { getSubjects } from '../../services/subjectService';
-import { addQuestion } from '../../services/questionService';
-import ButtonLoader from '../../components/ButtonLoader';
-import withAdminAuth from '../../auth/withAdminAuth';
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css"; // import the styles
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import DashboardLayout from "../../components/DashboardLayout";
+import { getSubjects } from "../../services/subjectService";
+import { addQuestion } from "../../services/questionService";
+import ButtonLoader from "../../components/ButtonLoader";
+import withAdminAuth from "../../auth/withAdminAuth";
+import Meta from "../../components/Meta";
 
 const AddQuestion = () => {
   const { token } = useSelector((state) => state.user);
   const [subjects, setSubjects] = useState([]);
-  const [editorValue, setEditorValue] = useState('');
+  const [editorValue, setEditorValue] = useState("");
   const [state, setState] = useState({
-    subject: '',
-    description: '',
-    optionA: '',
-    optionB: '',
-    optionC: '',
-    optionD: '',
-    answer: '',
+    subject: "",
+    description: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    answer: "",
   });
 
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   function handleRichEditor(newValue) {
@@ -33,12 +34,12 @@ const AddQuestion = () => {
   }
 
   function htmlToPlainText(html) {
-    return html.replace(/<[^>]+>/g, '');
+    return html.replace(/<[^>]+>/g, "");
   }
 
   function handleChange(e) {
     const value =
-      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setState({ ...state, [e.target.name]: value });
   }
 
@@ -78,16 +79,16 @@ const AddQuestion = () => {
 
   function handleReset() {
     setState({
-      subject: '',
-      description: '',
-      optionA: '',
-      optionB: '',
-      optionC: '',
-      optionD: '',
-      answer: '',
+      subject: "",
+      description: "",
+      optionA: "",
+      optionB: "",
+      optionC: "",
+      optionD: "",
+      answer: "",
     });
 
-    setEditorValue('');
+    setEditorValue("");
   }
 
   useEffect(() => {
@@ -103,27 +104,28 @@ const AddQuestion = () => {
 
   return (
     <>
+      <Meta title="Prompay | Add Question" />
       <DashboardLayout>
-        <div className='text-black dark:bg-main-dark-bg '>
-          <div className='pb-[50px] pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]'>
-            <div className='flex justify-between mb-[20px] md:mb-[49px]'>
-              <h2 className='font-[500] text-[24px] leading-7 text-black dark:text-white'>
+        <div className="text-black dark:bg-main-dark-bg ">
+          <div className="pb-[50px] pt-[90px] md:pt-[46px] mx-[15px] md:mx-[50px]">
+            <div className="flex justify-between mb-[20px] md:mb-[49px]">
+              <h2 className="font-[500] text-[24px] leading-7 text-black dark:text-white">
                 Add new question
               </h2>
             </div>
-            <div className='mt-10 md:w-4/5'>
-              <div className='w-full mb-2'>
-                <label htmlFor='subject' className='block font-bold'>
+            <div className="mt-10 md:w-4/5">
+              <div className="w-full mb-2">
+                <label htmlFor="subject" className="block font-bold">
                   Subject
                 </label>
                 <select
-                  name='subject'
-                  id='subject'
+                  name="subject"
+                  id="subject"
                   value={state.subject}
-                  className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                  className="w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded"
                   onChange={handleChange}
                 >
-                  <option value=''>Select Subject</option>
+                  <option value="">Select Subject</option>
                   {subjects.map((subject) => (
                     <option key={subject._id} value={subject._id}>
                       {subject.title}
@@ -131,122 +133,122 @@ const AddQuestion = () => {
                   ))}
                 </select>
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='description' className='block font-bold'>
+              <div className="w-full mb-2">
+                <label htmlFor="description" className="block font-bold">
                   Description
                 </label>
                 <textarea
-                  name='description'
-                  id='description'
+                  name="description"
+                  id="description"
                   value={state.description}
                   onChange={handleChange}
-                  className='w-full h-[60px] bg-light-gray border border-[rgba(0,0,0,0.2)] rounded p-2 resize-none'
+                  className="w-full h-[60px] bg-light-gray border border-[rgba(0,0,0,0.2)] rounded p-2 resize-none"
                 ></textarea>
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='question' className='block'>
+              <div className="w-full mb-2">
+                <label htmlFor="question" className="block">
                   Question
                 </label>
                 <ReactQuill
                   value={editorValue}
                   onChange={handleRichEditor}
-                  className='h-[200px] mb-[100px] md:mb-[70px]'
+                  className="h-[200px] mb-[100px] md:mb-[70px]"
                 />
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='optionA' className='block font-bold'>
+              <div className="w-full mb-2">
+                <label htmlFor="optionA" className="block font-bold">
                   Option A
                 </label>
                 <input
-                  type='text'
-                  id='optionA'
-                  name='optionA'
+                  type="text"
+                  id="optionA"
+                  name="optionA"
                   value={state.optionA}
                   onChange={handleChange}
-                  className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                  className="w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded"
                 />
                 <input
-                  type='radio'
-                  name='answer'
+                  type="radio"
+                  name="answer"
                   value={0}
                   onChange={handleChange}
-                  className='w-[20px] h-[20px] mx-4'
+                  className="w-[20px] h-[20px] mx-4"
                 />
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='optionB' className='block font-bold'>
+              <div className="w-full mb-2">
+                <label htmlFor="optionB" className="block font-bold">
                   Option B
                 </label>
                 <input
-                  type='text'
-                  id='optionB'
-                  name='optionB'
+                  type="text"
+                  id="optionB"
+                  name="optionB"
                   value={state.optionB}
                   onChange={handleChange}
-                  className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                  className="w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded"
                 />
                 <input
-                  type='radio'
-                  name='answer'
+                  type="radio"
+                  name="answer"
                   value={1}
                   onChange={handleChange}
-                  className='w-[20px] h-[20px] mx-4'
+                  className="w-[20px] h-[20px] mx-4"
                 />
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='optionC' className='block font-bold'>
+              <div className="w-full mb-2">
+                <label htmlFor="optionC" className="block font-bold">
                   Option C
                 </label>
                 <input
-                  type='text'
-                  id='optionC'
-                  name='optionC'
+                  type="text"
+                  id="optionC"
+                  name="optionC"
                   value={state.optionC}
                   onChange={handleChange}
-                  className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                  className="w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded"
                 />
                 <input
-                  type='radio'
-                  name='answer'
+                  type="radio"
+                  name="answer"
                   value={2}
                   onChange={handleChange}
-                  className='w-[20px] h-[20px] mx-4'
+                  className="w-[20px] h-[20px] mx-4"
                 />
               </div>
-              <div className='w-full mb-2'>
-                <label htmlFor='optionD' className='block font-bold'>
+              <div className="w-full mb-2">
+                <label htmlFor="optionD" className="block font-bold">
                   Option D
                 </label>
                 <input
-                  type='text'
-                  id='optionD'
-                  name='optionD'
+                  type="text"
+                  id="optionD"
+                  name="optionD"
                   value={state.optionD}
                   onChange={handleChange}
-                  className='w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded'
+                  className="w-[80%] md:w-[45%] py-2 pl-2 bg-light-gray border border-[rgba(0,0,0,0.2)] rounded"
                 />
                 <input
-                  type='radio'
-                  name='answer'
+                  type="radio"
+                  name="answer"
                   value={3}
                   onChange={handleChange}
-                  className='w-[20px] h-[20px] mx-4'
+                  className="w-[20px] h-[20px] mx-4"
                 />
               </div>
-              <div className='mt-8 mb-2 flex gap-[24px]'>
+              <div className="mt-8 mb-2 flex gap-[24px]">
                 {loadingSubmit ? (
                   <ButtonLoader />
                 ) : (
                   <>
                     <button
                       onClick={handleAddQuestion}
-                      className=' bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+                      className=" bg-primaryGreen hover:bg-black text-white px-5 py-2 flex items-center justify-center rounded"
                     >
                       Add question
                     </button>
                     <button
                       onClick={handleReset}
-                      className='bg-black text-white px-5 py-2 flex items-center justify-center rounded'
+                      className="bg-black text-white px-5 py-2 flex items-center justify-center rounded"
                     >
                       Reset
                     </button>
@@ -254,7 +256,7 @@ const AddQuestion = () => {
                 )}
               </div>
               {isError && (
-                <p className='mt-2 mb-8 text-[14px] text-red-600'>
+                <p className="mt-2 mb-8 text-[14px] text-red-600">
                   {errorMessage}
                 </p>
               )}
