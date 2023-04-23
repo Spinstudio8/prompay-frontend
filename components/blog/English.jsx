@@ -162,16 +162,38 @@ const English = () => {
         verb Unless + verb present, Future (will + stem). (Will not = won’t)
         Example: Unless you revise your lessons, you won’t pass your exam. The
         real meaning: If you don’t revise your lessons, you won’t pass your
-        exam. Articles Indefinite articles: a: is used before consonants
-        (sound). an: is used before vowels (sound). - We use it before countable
-        nouns that are unknown: Eg: a table, a car, a house. - We use it before
-        names of profession (jobs). Eg: a doctor, a painter. - We use it before
-        measurement. Eg: a liter, an hour. Definite articles: (the) - We use it
-        before adjectives to specify the category of people. Eg: the homeless,
-        the poor, the jobless, the rich. - We use it before an object that is
-        the only one. Eg: the moon, the earth, the pyramids. - When we talk
-        about institutions. Eg: the radio, the bank, the television. - When we
-        refer to a class of animals. Eg: the tiger is a dangerous animal.
+        exam.
+        <br />
+        Articles Indefinite articles: a: is used before consonants (sound). an:
+        is used before vowels (sound). - We use it before countable nouns that
+        are unknown: Eg: a table, a car, a house. - We use it before names of
+        profession (jobs). Eg: a doctor, a painter. - We use it before
+        measurement. Eg: a liter, an hour.
+        <br />
+        Definite articles: (the) - We use it before adjectives to specify the
+        category of people. Eg: the homeless, the poor, the jobless, the rich. -
+        We use it before an object that is the only one. Eg: the moon, the
+        earth, the pyramids. - When we talk about institutions. Eg: the radio,
+        the bank, the television. - When we refer to a class of animals. Eg: the
+        tiger is a dangerous animal.
+        <br />
+        Zero articles: (∅) no article is used. - Before uncountable nouns.
+        (money, oil …) - Before abstract nouns. (Peace, happiness…) - Before
+        names of people & places. - Before plural nouns. Purpose (goal)
+        Expressing purpose: We can express purpose using a number of
+        conjunctional phrases: to, so as to, in order to, so that, in order
+        that. - Subject + verb + + stem.
+        <br />
+        Examples:  John went to the station to meet his parents.  I study in
+        order to succeed. There are also negative forms: - Subject + verb + +
+        stem.
+        <br />
+        Examples: The soldiers moved at night, so as not to alarm the villagers.
+        - + Subject + verb (model). Example: I leave the window open so that the
+        cat can get out. Note: - The Present purpose: we use these models +
+        Subject + + stem. The past purpose: + Subject + + stem.
+        <br />
+        Example: We took an umbrella so that we wouldn’t get wet.
       </div>
     </div>
   );
