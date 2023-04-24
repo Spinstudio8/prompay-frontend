@@ -81,8 +81,8 @@ const About = () => {
               </p>
               <br />
               <p>
-                Here is how it works: You take an exam, earn and learn. It is as
-                simple as that!
+                Here is how it works: Read the blog for more insight, take
+                assessment and earn.
               </p>
               <br />
               <p>
