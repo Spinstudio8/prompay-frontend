@@ -1,6 +1,7 @@
 import React from "react";
 import { Paper, Button } from "@mui/material";
 const Item = ({ item, galery }) => {
+  console.log(item);
   return (
     <>
       <div

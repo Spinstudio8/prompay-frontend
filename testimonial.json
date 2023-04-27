@@ -1,27 +1,26 @@
-
 [
-    {
-        "id": 1,
-        "img":"/images/team/ino1.png",
-        "name":"Kelechi Afor",
-        "testimony":"The exams on PromPay are rather straightforward, and I was rewarded for learning. The effort is worthwhile."
-    },
-    {
-        "id": 2,
-        "img":"/images/team/ino2.png",
-        "name":"Ayomide Olagunju",
-        "testimony":"PromPay is a platform where you either pass and earn, or fail and learn. Both instances are a win-win scenario."
-    },
-    {
-        "id": 3,
-        "img": "/images/team/ino3.png",
-        "name":"Praise Okafor",
-        "testimony":"This is a great way to put your knowledge to the test and get rewarded for it."
-    },
-    {
-        "id": 4,
-        "img":"/images/team/ino4.png",
-        "name":"Sebotimo Jude",
-        "testimony":"I never believed I could earn so much by answering questions online. Now, I am always on PromPay every day."
-    }
+  {
+    "id": 1,
+    "img": "/images/team/ino5.jpg",
+    "name": "Kelechi Afor",
+    "testimony": "The exams on PromPay are rather straightforward, and I was rewarded for learning. The effort is worthwhile."
+  },
+  {
+    "id": 2,
+    "img": "/images/team/ino5.jpg",
+    "name": "Ayomide Olagunju",
+    "testimony": "PromPay is a platform where you either pass and earn, or fail and learn. Both instances are a win-win scenario."
+  },
+  {
+    "id": 3,
+    "img": "/images/team/ino5.jpg",
+    "name": "Praise Okafor",
+    "testimony": "This is a great way to put your knowledge to the test and get rewarded for it."
+  },
+  {
+    "id": 4,
+    "img": "/images/team/ino5.jpg",
+    "name": "Sebotimo Jude",
+    "testimony": "I never believed I could earn so much by answering questions online. Now, I am always on PromPay every day."
+  }
 ]
