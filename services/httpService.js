@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
 
+axios.defaults.timeout = 180000;
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //console.log(process.env.REACT_APP_API_URL);
 
@@ -13,7 +14,7 @@ axios.interceptors.response.use(null, (error) => {
 
   // if it's an unexpected error
   if (!expectedError) {
-    toast('Something failed.', { className: 'toast-style' });
+    toast("Something failed.", { className: "toast-style" });
   }
 
   return Promise.reject(error); // the error is sent to the catch block
